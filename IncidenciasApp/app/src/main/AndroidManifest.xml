@@ -11,13 +11,15 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity">
-        </activity>
-        <activity android:name=".SignUpActivity"></activity>
-        <activity android:name=".MainAdministradorActivity"></activity>
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".SignUpActivity" />
+        <activity android:name=".Administrador.MainAdministradorActivity" />
+        <activity android:name=".Administrador.IncidenciasAdministradorActivity" />
+        <activity android:name=".Administrador.ListaUsuariosActivity"></activity>
     </application>
 
 </manifest>

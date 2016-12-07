@@ -27,8 +27,8 @@ public class Incidencia extends RealmObject {
     private Integer status;
     private String equipoAfectado;
     private String fechaCreacion;
-//    private Usuario usuarioLevanta;
-//    private Usuario usuarioTecnico;
+    private Usuario usuarioLevanta;
+    private Usuario usuarioTecnico;
 
     public Integer getPkIncidencia() {
         return pkIncidencia;
@@ -86,20 +86,20 @@ public class Incidencia extends RealmObject {
         this.fechaCreacion = fechaCreacion;
     }
 
-    //public Usuario getUsuarioLevanta() {
-      //  return usuarioLevanta;
-    //}
-
-    public void setUsuarioLevanta(Usuario usuarioLevanta) {
-       // this.usuarioLevanta = usuarioLevanta;
+    public Usuario getUsuarioLevanta() {
+        return usuarioLevanta;
     }
 
-    //public Usuario getUsuarioTecnico() {
-        //return usuarioTecnico;
-    //}
+    public void setUsuarioLevanta(Usuario usuarioLevanta) {
+        this.usuarioLevanta = usuarioLevanta;
+    }
+
+    public Usuario getUsuarioTecnico() {
+        return usuarioTecnico;
+    }
 
     public void setUsuarioTecnico(Usuario usuarioTecnico) {
-  //      this.usuarioTecnico = usuarioTecnico;
+        this.usuarioTecnico = usuarioTecnico;
     }
 
     public static void newIncidencia(Context context, String descripcion, int prioridad, int status,
@@ -115,8 +115,8 @@ public class Incidencia extends RealmObject {
         incidencia.setUbicacion(ubicacion);
         incidencia.setEquipoAfectado(equipoAfectado);
         incidencia.setFechaCreacion(fechaCreacion);
-//        incidencia.setUsuarioLevanta(usuarioLevanta);
-//        incidencia.setUsuarioTecnico(usuarioTecnico);
+        incidencia.setUsuarioLevanta(usuarioLevanta);
+        incidencia.setUsuarioTecnico(usuarioTecnico);
         realm.commitTransaction();
     }
 

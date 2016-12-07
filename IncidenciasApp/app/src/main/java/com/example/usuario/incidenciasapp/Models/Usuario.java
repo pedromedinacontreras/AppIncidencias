@@ -79,6 +79,7 @@ public class Usuario extends RealmObject {
         Usuario user = realm.createObject(Usuario.class, pkUsuario);
         user.setCorreo(correo);
         user.setContraseña(contraseña);
+        user.setTipoUsuario(tipoUsuario);
         realm.commitTransaction();
     }
 

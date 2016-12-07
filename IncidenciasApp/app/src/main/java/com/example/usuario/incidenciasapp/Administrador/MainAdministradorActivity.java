@@ -1,12 +1,14 @@
-package com.example.usuario.incidenciasapp;
+package com.example.usuario.incidenciasapp.Administrador;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
+
+import com.example.usuario.incidenciasapp.R;
 
 public class MainAdministradorActivity extends AppCompatActivity {
 
@@ -23,9 +25,13 @@ public class MainAdministradorActivity extends AppCompatActivity {
         switch (view.getId()){
             case R.id.btn_admin_incidencias:
                 Toast.makeText(this, "btn_admin_incidencias", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(MainAdministradorActivity.this, IncidenciasAdministradorActivity.class);
+                startActivity(i);
                 break;
             case R.id.btn_admin_usuarios:
                 Toast.makeText(this, "btn_admin_usuarios", Toast.LENGTH_SHORT).show();
+                Intent iListaUsuarios = new Intent(MainAdministradorActivity.this, ListaUsuariosActivity.class);
+                startActivity(iListaUsuarios);
                 break;
             case R.id.btn_admin_tecnicos:
                 Toast.makeText(this, "btn_admin_tecnicos", Toast.LENGTH_SHORT).show();
