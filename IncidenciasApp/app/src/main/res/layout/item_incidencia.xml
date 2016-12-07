@@ -19,6 +19,7 @@
             android:gravity="center"
             android:orientation="vertical">
             <TextView
+                android:id="@+id/tv_titulo_incidencia"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -27,6 +28,7 @@
                 android:textSize="25sp"
                 android:textColor="#000"/>
             <TextView
+                android:id="@+id/tv_equipo_afectado"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -46,28 +48,30 @@
                 android:layout_width="91dp"
                 android:layout_height="40dp"
                 android:layout_gravity="right"
-                android:layout_marginTop="25dp">
+                android:layout_marginTop="25dp"
+                android:visibility="gone">
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:srcCompat="@drawable/rectangle_470" />
 
-                <TextView
-                    android:id="@+id/tv_descuento"
-                    android:layout_width="41dp"
-                    android:layout_height="28dp"
-                    android:layout_marginBottom="6dp"
-                    android:layout_marginLeft="35dp"
-                    android:layout_marginRight="15dp"
-                    android:layout_marginTop="6dp"
-                    android:gravity="center_vertical"
-                    android:textAlignment="center"
-                    android:text="2"
-                    android:textColor="#FFF"
-                    android:textSize="20sp" />
+                <!--<TextView-->
+                    <!--android:id="@+id/tv_descuento"-->
+                    <!--android:layout_width="41dp"-->
+                    <!--android:layout_height="28dp"-->
+                    <!--android:layout_marginBottom="6dp"-->
+                    <!--android:layout_marginLeft="35dp"-->
+                    <!--android:layout_marginRight="15dp"-->
+                    <!--android:layout_marginTop="6dp"-->
+                    <!--android:gravity="center_vertical"-->
+                    <!--android:textAlignment="center"-->
+                    <!--android:text="2"-->
+                    <!--android:textColor="#FFF"-->
+                    <!--android:textSize="20sp" />-->
             </FrameLayout>
             <TextView
+                android:id="@+id/tv_fecha"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="03 dic. 2016"
@@ -78,7 +82,7 @@
         <FrameLayout
             android:layout_width="20dp"
             android:layout_height="match_parent"
-            android:background="@color/colorPrimary">
+            android:background="@color/yellow">
 
         </FrameLayout>
     </LinearLayout>
@@ -90,6 +94,7 @@
         android:orientation="horizontal">
 
         <TextView
+            android:id="@+id/tv_usuario_levanta"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -97,6 +102,7 @@
             android:textSize="25sp"
             android:gravity="center"/>
         <TextView
+            android:id="@+id/tv_tecnico_asignado"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_marginTop="20dp"
+    android:layout_marginLeft="35dp"
+    android:layout_height="220dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="35sp"
+            android:text="Nombre usuario: "
+            android:layout_marginRight="50dp"
+            android:textColor="@color/colorPrimaryDark" />
+        <TextView
+            android:id="@+id/tv_nombre_usuario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Luis Rey"
+            android:textSize="35sp"
+            android:textColor="@color/colorAccent"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="35sp"
+            android:text="Puesto: "
+            android:layout_marginRight="50dp"
+            android:textColor="@color/colorPrimaryDark" />
+        <TextView
+            android:id="@+id/tv_puesto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Técnico"
+            android:textSize="35sp"
+            android:textColor="@color/colorAccent"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="35sp"
+            android:text="Equipo que utiliza: "
+            android:layout_marginRight="50dp"
+            android:textColor="@color/colorPrimaryDark" />
+        <TextView
+            android:id="@+id/tv_equipo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MacBook pro"
+            android:textSize="35sp"
+            android:textColor="@color/colorAccent"/>
+    </LinearLayout>
+
+</LinearLayout>
