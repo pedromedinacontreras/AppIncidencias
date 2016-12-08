@@ -20,7 +20,7 @@ public class Usuario extends RealmObject {
     public static final int TIPO_EMPLEADO = 3;
 
     @PrimaryKey
-    private String pkUsuario;
+    private String pkUsuario; //numero de celular
     private String correo;
     private String contraseña;
     private int tipoUsuario;
