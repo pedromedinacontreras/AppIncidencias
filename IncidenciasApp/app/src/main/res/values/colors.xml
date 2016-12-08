@@ -27,5 +27,8 @@
     <color name="tiempoaire_color">#ba80d0</color>
     <color name="seguros_color">#57c8e7</color>
     <color name="tab_blanco_opaco">#80ffffff</color>
+    <color name="rojo">#D50000</color>
+
+
 
 </resources>
