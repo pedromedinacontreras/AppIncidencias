@@ -67,21 +67,24 @@ public class IncidenciasPorAsignarFragment extends Fragment {
                                 dialogTecnicos = createListaTecnicosDialog();
                                 dialogTecnicos.show();
                                 recyclerViewTecnicos = (RecyclerView) dialogTecnicos.findViewById(R.id.recycler_tecnicos_dialog);
-                                UsuarioDialogAdapter adapterTecnios = new UsuarioDialogAdapter(getContext());
+                                final UsuarioDialogAdapter adapterTecnios = new UsuarioDialogAdapter(getContext());
                                 lmanagerTecnicos = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
                                 recyclerViewTecnicos.setLayoutManager(lmanagerTecnicos);
                                 recyclerViewTecnicos.setAdapter(adapterTecnios);
                                 recyclerViewTecnicos.addOnItemTouchListener(new RecyclerItemClickListener(getActivity(), new RecyclerItemClickListener.OnItemClickListener() {
                                     @Override
                                     public void onItemClick(View view, int position) {
+                                       Usuario user = Usuario.getTecnicos(getContext()).get(position);
                                         Realm.init(getContext());
                                         Realm realm = Realm.getDefaultInstance();
                                         realm.beginTransaction();
-                                        incidencia.setUsuarioTecnico(Usuario.getTecnicos(getContext()).get(position));
+                                        incidencia.setUsuarioTecnico(user);
                                         incidencia.setStatus(Incidencia.ESTATUS_EN_PROCESO);
                                         realm.commitTransaction();
+                                        Usuario.addEsfuerzo(getContext(), user.getCorreo(), incidencia.getEsfuerzo());
                                         dialogTecnicos.dismiss();
                                         adapter.notifyDataSetChanged();
+                                        adapterTecnios.notifyDataSetChanged();
                                     }
                                 }));
                             }
@@ -119,8 +122,8 @@ public class IncidenciasPorAsignarFragment extends Fragment {
         TextView tvFecha = (TextView) view.findViewById(R.id.tv_fecha_incidencia);
         TextView tvUsuarioLevanta = (TextView) view.findViewById(R.id.tv_usuario_levanta_incidencia);
         TextView tvEquipo = (TextView) view.findViewById(R.id.tv_equipo_incidencia);
-        tvCategoria.setText("Categoría: Aqui va la categoría");
-        tvTitulo.setText("Título: Aquí va el título");
+        tvCategoria.setText(incidencia.getCategoria());
+        tvTitulo.setText(incidencia.getTitulo());
         tvFecha.setText(incidencia.getFechaCreacion());
         tvUsuarioLevanta.setText(incidencia.getUsuarioLevanta().getCorreo());
         tvEquipo.setText(incidencia.getEquipoAfectado());

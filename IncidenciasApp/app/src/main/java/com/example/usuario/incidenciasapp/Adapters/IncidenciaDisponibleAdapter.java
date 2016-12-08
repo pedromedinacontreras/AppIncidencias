@@ -49,11 +49,12 @@ public class IncidenciaDisponibleAdapter  extends RecyclerView.Adapter<Incidenci
     public void onBindViewHolder(IncidenciaDisponibleAdapter.IncidenciaViewHolder holder, int i) {
         final Incidencia incidencia = items.get(i);
 
-        holder.tvTituloIncidencia.setText(incidencia.getDescripcion());
+        holder.tvTituloIncidencia.setText(incidencia.getTitulo());
         holder.tvFecha.setText(incidencia.getFechaCreacion());
         holder.tvUsuarioLevanta.setText(incidencia.getUsuarioLevanta().getCorreo());
         holder.tvEquipoAfectado.setText(incidencia.getEquipoAfectado());
-        if(incidencia.getStatus() != status){
+
+        if(incidencia.getStatus() != Incidencia.ESTATUS_DISPONIBLE){
             holder.tvTituloIncidencia.setTextColor(Color.parseColor("#D50000"));
             holder.tvFecha.setTextColor(Color.parseColor("#D50000"));
             holder.tvUsuarioLevanta.setTextColor(Color.parseColor("#D50000"));

@@ -18,12 +18,18 @@ public class Usuario extends RealmObject {
     public static final int TIPO_ADMINISTRADOR = 1;
     public static final int TIPO_TECNICO = 2;
     public static final int TIPO_EMPLEADO = 3;
+    public static final String HARDWARE = "HARDWARE";
+    public static final String SOFTWARE = "SOFTWARE";
+    public static final String REDES = "REDES";
+    public static final String SIN_ESPECIALIDAD = "SIN_ESPECIALIDAD";
 
     @PrimaryKey
     private String pkUsuario;
     private String correo;
     private String contraseña;
     private int tipoUsuario;
+    private String especialidad;
+    private int esfuerzo;
 
     public Usuario() {
     }
@@ -60,6 +66,22 @@ public class Usuario extends RealmObject {
         this.tipoUsuario = tipoUsuario;
     }
 
+    public String getEspecialidad() {
+        return especialidad;
+    }
+
+    public void setEspecialidad(String especialidad) {
+        this.especialidad = especialidad;
+    }
+
+    public int getEsfuerzo() {
+        return esfuerzo;
+    }
+
+    public void setEsfuerzo(int esfuerzo) {
+        this.esfuerzo = esfuerzo;
+    }
+
     public static ArrayList<Usuario> getAll(android.content.Context context){
         ArrayList<Usuario> usuarioArrayList= new ArrayList<>();
         Realm.init(context);
@@ -72,7 +94,7 @@ public class Usuario extends RealmObject {
         return usuarioArrayList;
     }
 
-    public static void newUsuario(android.content.Context context, String pkUsuario, String correo, String contraseña, int tipoUsuario){
+    public static void newUsuario(android.content.Context context, String pkUsuario, String correo, String contraseña, int tipoUsuario, String especialidad){
         Realm.init(context);
         Realm realm = Realm.getDefaultInstance();
         realm.beginTransaction();
@@ -80,6 +102,8 @@ public class Usuario extends RealmObject {
         user.setCorreo(correo);
         user.setContraseña(contraseña);
         user.setTipoUsuario(tipoUsuario);
+        user.setEspecialidad(especialidad);
+        user.setEsfuerzo(0);
         realm.commitTransaction();
     }
 
@@ -125,5 +149,27 @@ public class Usuario extends RealmObject {
         Realm realm = Realm.getDefaultInstance();
         Usuario usuario = realm.where(Usuario.class).equalTo("pkUsuario", pk).findFirst();
         return usuario;
+    }
+
+    public static void addEsfuerzo(android.content.Context context, String correo, int esfuerzo) {
+        Realm.init(context);
+        Realm realm = Realm.getDefaultInstance();
+        realm.beginTransaction();
+        Usuario user = getUsuarioByEmail(context , correo);
+        int suma = user.getEsfuerzo();
+        suma += esfuerzo;
+        user.setEsfuerzo(suma);
+        realm.commitTransaction();
+    }
+
+    public static void restarEsfuerzo(android.content.Context context, String correo, int esfuerzo) {
+        Realm.init(context);
+        Realm realm = Realm.getDefaultInstance();
+        realm.beginTransaction();
+        Usuario user = getUsuarioByEmail(context , correo);
+        int nuevoEsfuerzo = user.getEsfuerzo();
+        nuevoEsfuerzo -= esfuerzo;
+        user.setEsfuerzo(nuevoEsfuerzo);
+        realm.commitTransaction();
     }
 }
