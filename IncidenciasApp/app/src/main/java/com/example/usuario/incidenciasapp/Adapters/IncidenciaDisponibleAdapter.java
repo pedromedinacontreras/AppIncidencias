@@ -6,7 +6,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.usuario.incidenciasapp.Models.Incidencia;
@@ -15,16 +14,16 @@ import com.example.usuario.incidenciasapp.R;
 import java.util.ArrayList;
 
 /**
- * Created by usuario on 6/12/16.
+ * Created by usuario on 8/12/16.
  */
 
-public class IncidenciaAdapter extends RecyclerView.Adapter<IncidenciaAdapter.IncidenciaViewHolder> {
+public class IncidenciaDisponibleAdapter  extends RecyclerView.Adapter<IncidenciaDisponibleAdapter.IncidenciaViewHolder> {
 
     private ArrayList<Incidencia> items;
     private Context context;
     private int status;
 
-    public IncidenciaAdapter(Context context, ArrayList<Incidencia> items, int status) {
+    public IncidenciaDisponibleAdapter(Context context, ArrayList<Incidencia> items, int status) {
         //this.items = items;
         this.context = context;
         switch (status) {
@@ -41,20 +40,26 @@ public class IncidenciaAdapter extends RecyclerView.Adapter<IncidenciaAdapter.In
     }
 
     @Override
-    public IncidenciaAdapter.IncidenciaViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+    public IncidenciaDisponibleAdapter.IncidenciaViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_incidencia,viewGroup,false);
-        return new IncidenciaViewHolder(v);
+        return new IncidenciaDisponibleAdapter.IncidenciaViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(IncidenciaAdapter.IncidenciaViewHolder holder, int i) {
+    public void onBindViewHolder(IncidenciaDisponibleAdapter.IncidenciaViewHolder holder, int i) {
         final Incidencia incidencia = items.get(i);
 
         holder.tvTituloIncidencia.setText(incidencia.getDescripcion());
         holder.tvFecha.setText(incidencia.getFechaCreacion());
         holder.tvUsuarioLevanta.setText(incidencia.getUsuarioLevanta().getCorreo());
-        holder.tvTecnicoAsignado.setText(incidencia.getUsuarioTecnico().getCorreo());
         holder.tvEquipoAfectado.setText(incidencia.getEquipoAfectado());
+        if(incidencia.getStatus() != status){
+            holder.tvTituloIncidencia.setTextColor(Color.parseColor("#D50000"));
+            holder.tvFecha.setTextColor(Color.parseColor("#D50000"));
+            holder.tvUsuarioLevanta.setTextColor(Color.parseColor("#D50000"));
+            holder.tvEquipoAfectado.setTextColor(Color.parseColor("#D50000"));
+            holder.tvTecnicoAsignado.setTextColor(Color.parseColor("#D50000"));
+        }
     }
 
     @Override

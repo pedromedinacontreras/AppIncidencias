@@ -103,4 +103,27 @@ public class Usuario extends RealmObject {
         usuarioArrayList.addAll(usuarioRealmResults);
         return usuarioArrayList;
     }
+
+    public static ArrayList<Usuario> getEmpleados (android.content.Context context){
+        ArrayList<Usuario> usuarioArrayList= new ArrayList<>();
+        Realm.init(context);
+        Realm realm = Realm.getDefaultInstance();
+        RealmResults<Usuario> usuarioRealmResults = realm.where(Usuario.class).equalTo("tipoUsuario",Usuario.TIPO_EMPLEADO).findAll();
+        usuarioArrayList.addAll(usuarioRealmResults);
+        return usuarioArrayList;
+    }
+
+    public static Usuario getUsuarioByEmail(android.content.Context context, String correo) {
+        Realm.init(context);
+        Realm realm = Realm.getDefaultInstance();
+        Usuario usuario = realm.where(Usuario.class).equalTo("correo",correo).findFirst();
+        return usuario;
+    }
+
+    public static Usuario getUsuarioByPk(android.content.Context context, String pk) {
+        Realm.init(context);
+        Realm realm = Realm.getDefaultInstance();
+        Usuario usuario = realm.where(Usuario.class).equalTo("pkUsuario", pk).findFirst();
+        return usuario;
+    }
 }
