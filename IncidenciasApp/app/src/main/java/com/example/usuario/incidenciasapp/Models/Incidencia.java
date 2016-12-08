@@ -104,7 +104,7 @@ public class Incidencia extends RealmObject {
 
     public static void newIncidencia(Context context, String descripcion, int prioridad, int status,
                                      String ubicacion, String equipoAfectado, String fechaCreacion,
-                                     Usuario usuarioLevanta, Usuario usuarioTecnico) {
+                                     Usuario usuarioLevanta) {
         Realm.init(context);
         Realm realm = Realm.getDefaultInstance();
         realm.beginTransaction();
@@ -116,7 +116,6 @@ public class Incidencia extends RealmObject {
         incidencia.setEquipoAfectado(equipoAfectado);
         incidencia.setFechaCreacion(fechaCreacion);
         incidencia.setUsuarioLevanta(usuarioLevanta);
-        incidencia.setUsuarioTecnico(usuarioTecnico);
         realm.commitTransaction();
     }
 
@@ -127,6 +126,15 @@ public class Incidencia extends RealmObject {
         RealmResults<Incidencia> incidenciaRealmResults = realm.where(Incidencia.class).findAll();
         nextId = incidenciaRealmResults.size();
         return nextId + 1001;
+    }
+
+    public static ArrayList<Incidencia> getAll(Context context) {
+        ArrayList<Incidencia> incidencias= new ArrayList<>();
+        Realm.init(context);
+        Realm realm = Realm.getDefaultInstance();
+        RealmResults<Incidencia> incidenciaRealmResults = realm.where(Incidencia.class).findAll();
+        incidencias.addAll(incidenciaRealmResults);
+        return incidencias;
     }
 
     public static ArrayList<Incidencia> getIncidenciasDisponibles(Context context) {

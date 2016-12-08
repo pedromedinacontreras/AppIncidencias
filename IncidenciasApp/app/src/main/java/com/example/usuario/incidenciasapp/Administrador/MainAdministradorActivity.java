@@ -6,19 +6,33 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.usuario.incidenciasapp.LoginActivity;
+import com.example.usuario.incidenciasapp.Models.UsuarioLogeado;
 import com.example.usuario.incidenciasapp.R;
 
 public class MainAdministradorActivity extends AppCompatActivity {
 
     Toolbar toolbar;
+    TextView tvSalir;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_administrador);
         toolbar = (Toolbar) findViewById(R.id.toolbar_admin_main);
         setSupportActionBar(toolbar);
+        tvSalir = (TextView) findViewById(R.id.tv_toolbar_salir);
+        tvSalir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                UsuarioLogeado.setUsuarioLogeadoToNull(MainAdministradorActivity.this);
+                Intent i = new Intent(MainAdministradorActivity.this, LoginActivity.class);
+                finish();
+                startActivity(i);
+            }
+        });
     }
 
     public void onClick(View view) {

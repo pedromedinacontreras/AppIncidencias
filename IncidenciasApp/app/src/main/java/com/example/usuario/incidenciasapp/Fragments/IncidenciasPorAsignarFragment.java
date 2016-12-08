@@ -15,14 +15,18 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.usuario.incidenciasapp.Adapters.IncidenciaAdapter;
+import com.example.usuario.incidenciasapp.Adapters.IncidenciaDisponibleAdapter;
 import com.example.usuario.incidenciasapp.Adapters.UsuarioDialogAdapter;
 import com.example.usuario.incidenciasapp.Administrador.ListaUsuariosActivity;
 import com.example.usuario.incidenciasapp.Models.Incidencia;
+import com.example.usuario.incidenciasapp.Models.Usuario;
 import com.example.usuario.incidenciasapp.R;
 import com.example.usuario.incidenciasapp.RecyclerItemClickListener;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import io.realm.Realm;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -30,10 +34,15 @@ import java.util.List;
 public class IncidenciasPorAsignarFragment extends Fragment {
 
     private RecyclerView recyclerView;
+    private RecyclerView recyclerViewTecnicos;
     private RecyclerView.LayoutManager lmanager;
     private RecyclerView.LayoutManager lmanagerTecnicos;
-    private IncidenciaAdapter adapter;
-    ArrayList<Incidencia> incidencias = new ArrayList<>();
+    private IncidenciaDisponibleAdapter adapter;
+    private ArrayList<Incidencia> incidencias = new ArrayList<>();
+    private Dialog dialogTecnicos;
+    private Dialog dialog;
+    private Incidencia incidencia;
+    private int posicionRecycler;
 
     public IncidenciasPorAsignarFragment() {
         // Required empty public constructor
@@ -47,19 +56,34 @@ public class IncidenciasPorAsignarFragment extends Fragment {
                 new RecyclerItemClickListener(getActivity(), new RecyclerItemClickListener.OnItemClickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
-                        final Dialog dialog = createDetalleIncidenciaDialog(position);
+                        posicionRecycler = position;
+                        dialog = createDetalleIncidenciaDialog(position);
                         dialog.show();
                         Button btnAsignar = (Button) dialog.findViewById(R.id.btn_asignar_tecnico);
                         btnAsignar.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                Dialog dialogTecnicos = createListaTecnicosDialog();
+                                dialog.dismiss();
+                                dialogTecnicos = createListaTecnicosDialog();
                                 dialogTecnicos.show();
-                                RecyclerView recyclerViewTecnicos = (RecyclerView) dialogTecnicos.findViewById(R.id.recycler_tecnicos_dialog);
+                                recyclerViewTecnicos = (RecyclerView) dialogTecnicos.findViewById(R.id.recycler_tecnicos_dialog);
                                 UsuarioDialogAdapter adapterTecnios = new UsuarioDialogAdapter(getContext());
                                 lmanagerTecnicos = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
                                 recyclerViewTecnicos.setLayoutManager(lmanagerTecnicos);
                                 recyclerViewTecnicos.setAdapter(adapterTecnios);
+                                recyclerViewTecnicos.addOnItemTouchListener(new RecyclerItemClickListener(getActivity(), new RecyclerItemClickListener.OnItemClickListener() {
+                                    @Override
+                                    public void onItemClick(View view, int position) {
+                                        Realm.init(getContext());
+                                        Realm realm = Realm.getDefaultInstance();
+                                        realm.beginTransaction();
+                                        incidencia.setUsuarioTecnico(Usuario.getTecnicos(getContext()).get(position));
+                                        incidencia.setStatus(Incidencia.ESTATUS_EN_PROCESO);
+                                        realm.commitTransaction();
+                                        dialogTecnicos.dismiss();
+                                        adapter.notifyDataSetChanged();
+                                    }
+                                }));
                             }
                         });
                     }
@@ -79,13 +103,13 @@ public class IncidenciasPorAsignarFragment extends Fragment {
         recyclerView = (RecyclerView) getView().findViewById(R.id.recycler_incidencias_por_asignar);
         lmanager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
         recyclerView.setLayoutManager(lmanager);
-        adapter = new IncidenciaAdapter(getContext(),incidencias, Incidencia.ESTATUS_DISPONIBLE);
+        adapter = new IncidenciaDisponibleAdapter(getContext(),incidencias, Incidencia.ESTATUS_DISPONIBLE);
         recyclerView.setAdapter(adapter);
     }
 
     public Dialog createDetalleIncidenciaDialog(int position){
         final AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        Incidencia incidencia = incidencias.get(position);
+        incidencia = incidencias.get(position);
         LayoutInflater inflater = getActivity().getLayoutInflater();
         final View view = inflater.inflate(R.layout.dialog_detalle_incidencia_por_asignar,null);
         view.findViewById(R.id.btn_asignar_tecnico).setVisibility(View.VISIBLE);
@@ -105,6 +129,7 @@ public class IncidenciasPorAsignarFragment extends Fragment {
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
+                        dialog.dismiss();
                     }
                 });
         return builder.create();
@@ -119,9 +144,9 @@ public class IncidenciasPorAsignarFragment extends Fragment {
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogTecnicos.dismiss();
                     }
                 });
         return builder.create();
     }
-
 }

@@ -1,5 +1,6 @@
 package com.example.usuario.incidenciasapp;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.usuario.incidenciasapp.Administrador.MainAdministradorActivity;
 import com.example.usuario.incidenciasapp.Models.Usuario;
 import com.example.usuario.incidenciasapp.Models.UsuarioLogeado;
 
@@ -39,8 +41,16 @@ public class LoginActivity extends AppCompatActivity {
                 final String correo = edtCorreo.getText().toString();
                 final String contraseña = edtContrasena.getText().toString();
                 boolean inicioSesion = Usuario.inicioSesion(LoginActivity.this, correo, contraseña);
+                Usuario user = Usuario.getUsuarioByEmail(LoginActivity.this, correo);
                 if(inicioSesion) {
                   Toast.makeText(LoginActivity.this, "Inicio sesión correcto", Toast.LENGTH_SHORT).show();
+                    UsuarioLogeado.setUsuarioLogeado(LoginActivity.this, user);
+                    Intent intent = new Intent();
+                    if(user.getTipoUsuario() == Usuario.TIPO_ADMINISTRADOR){
+                        intent = new Intent(LoginActivity.this, MainAdministradorActivity.class);
+                    }
+                    finish();
+                    startActivity(intent);
                 } else {
                     Toast.makeText(LoginActivity.this, "Correo y/o contraseña incorrecto(s)", Toast.LENGTH_SHORT).show();
                 }
