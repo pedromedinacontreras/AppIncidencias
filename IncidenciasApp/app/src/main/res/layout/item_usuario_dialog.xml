@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:gravity="center">
+
+    <TextView
+        android:id="@+id/tv_tecnico_dialog"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="5"
+        android:text="Pidro midina"
+        android:gravity="center_vertical"
+        android:textSize="18sp"
+        android:layout_marginLeft="10dp"/>
+    <TextView
+        android:id="@+id/tv_especialidad_tecnico_dialog"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="5"
+        android:text="Pidro midina"
+        android:gravity="center_vertical"
+        android:textSize="18sp"
+        android:layout_marginLeft="10dp"/>
+    <TextView
+        android:id="@+id/tv_calificacion_pendientes"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:text="10"
+        android:gravity="center_vertical"
+        android:textSize="18sp"
+        android:layout_marginRight="10dp"
+        android:textColor="@color/rojo"/>
+</LinearLayout>

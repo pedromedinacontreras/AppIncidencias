@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="300dp"
+    android:layout_height="500dp"
+    android:padding="20dp"
+    android:gravity="center">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_categoria_incidencia"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="Categoría: ________"
+            android:textSize="25sp"/>
+        <TextView
+            android:id="@+id/tv_titulo_incidencia"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="Título: ________"
+            android:textSize="25sp"/>
+        <TextView
+            android:id="@+id/tv_fecha_incidencia"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="Fecha: ________"
+            android:textSize="25sp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="Usuario que levantó:"
+            android:textSize="25sp"/>
+        <TextView
+            android:id="@+id/tv_usuario_levanta_incidencia"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="_______________"
+            android:textSize="25sp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="Equipo afectado:"
+            android:textSize="25sp"/>
+        <TextView
+            android:id="@+id/tv_equipo_incidencia"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="_______________"
+            android:textSize="25sp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="Técnico:"
+            android:textSize="25sp"/>
+        <TextView
+            android:id="@+id/tv_tecnico_incidencia"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="_______________"
+            android:textSize="25sp"/>
+        <Button
+            android:id="@+id/btn_asignar_tecnico"
+            android:layout_width="150dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/whiteColor"
+            android:text="Asignar técnico"
+            android:visibility="gone"/>
+
+    </LinearLayout>
+</LinearLayout>

@@ -94,4 +94,13 @@ public class Usuario extends RealmObject {
         }
         return inicioCorrecto;
     }
+
+    public static ArrayList<Usuario> getTecnicos (android.content.Context context){
+        ArrayList<Usuario> usuarioArrayList= new ArrayList<>();
+        Realm.init(context);
+        Realm realm = Realm.getDefaultInstance();
+        RealmResults<Usuario> usuarioRealmResults = realm.where(Usuario.class).equalTo("tipoUsuario",Usuario.TIPO_TECNICO).findAll();
+        usuarioArrayList.addAll(usuarioRealmResults);
+        return usuarioArrayList;
+    }
 }
