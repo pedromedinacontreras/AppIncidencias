@@ -44,7 +44,7 @@ public class SignUpActivity extends AppCompatActivity {
                 final String tipoUsuario = edtTipoUsuario.getText().toString();
                 final String usuario = edtUsuario.getText().toString();
                 final String contrasena = edtContrasena.getText().toString();
-                Usuario.newUsuario(SignUpActivity.this, telefono, email, contrasena, Integer.valueOf(tipoUsuario));
+                //pedUsuario.newUsuario(SignUpActivity.this, telefono, email, contrasena, Integer.valueOf(tipoUsuario), Usuario.);
             }
         });
     }

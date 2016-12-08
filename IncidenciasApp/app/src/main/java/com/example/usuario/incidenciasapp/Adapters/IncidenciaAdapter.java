@@ -50,7 +50,7 @@ public class IncidenciaAdapter extends RecyclerView.Adapter<IncidenciaAdapter.In
     public void onBindViewHolder(IncidenciaAdapter.IncidenciaViewHolder holder, int i) {
         final Incidencia incidencia = items.get(i);
 
-        holder.tvTituloIncidencia.setText(incidencia.getDescripcion());
+        holder.tvTituloIncidencia.setText(incidencia.getTitulo());
         holder.tvFecha.setText(incidencia.getFechaCreacion());
         holder.tvUsuarioLevanta.setText(incidencia.getUsuarioLevanta().getCorreo());
         holder.tvTecnicoAsignado.setText(incidencia.getUsuarioTecnico().getCorreo());
