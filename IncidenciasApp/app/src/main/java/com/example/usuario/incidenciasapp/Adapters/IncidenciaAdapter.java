@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.usuario.incidenciasapp.Models.Incidencia;
@@ -20,10 +21,12 @@ public class IncidenciaAdapter extends RecyclerView.Adapter<IncidenciaAdapter.In
 
     private ArrayList<Incidencia> items;
     private Context context;
+    private int status;
 
-    public IncidenciaAdapter(Context context, ArrayList<Incidencia> items) {
+    public IncidenciaAdapter(Context context, ArrayList<Incidencia> items, int status) {
         this.items = items;
         this.context = context;
+        this.status = status;
     }
 
     @Override
@@ -56,7 +59,6 @@ public class IncidenciaAdapter extends RecyclerView.Adapter<IncidenciaAdapter.In
         TextView tvTecnicoAsignado;
         TextView tvFecha;
 
-
         public IncidenciaViewHolder(View view){
             super(view);
             tvTituloIncidencia = (TextView) view.findViewById(R.id.tv_titulo_incidencia);
@@ -66,5 +68,13 @@ public class IncidenciaAdapter extends RecyclerView.Adapter<IncidenciaAdapter.In
             tvFecha = (TextView) view.findViewById(R.id.tv_fecha);
         }
     }
+
+//    public interface AccionRecyclerInterface {
+//        public void onCalificar(int pkPrestamo);
+//    }
+//
+//    public void CalificarCompraInterface(AccionRecyclerInterface calificarCompra){
+//        this.calificarCompra = calificarCompra;
+//    }
 
 }

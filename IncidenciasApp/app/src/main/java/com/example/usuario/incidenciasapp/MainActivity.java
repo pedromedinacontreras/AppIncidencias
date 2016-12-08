@@ -21,7 +21,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
        // Usuario.newUsuario(this, "6672222222", "pedro@gmail.com", "1234", Usuario.TIPO_ADMINISTRADOR);
-       // Usuario.newUsuario(this, "6672333333", "nataniel@gmail.com", "1234", Usuario.TIPO_TECNICO);
+       // Usuario.newUsuario(this, "6672640676", "abrahams@gmail.com", "1234", Usuario.TIPO_TECNICO);
+       // Usuario.newUsuario(this, "6672640675", "zavalza@gmail.com", "1234", Usuario.TIPO_TECNICO);
        // Usuario.newUsuario(this, "6672444444", "gordaney@gmail.com", "1234", Usuario.TIPO_EMPLEADO);
 
 //        Incidencia.newIncidencia(this,"Teclado con ausencia de teclas", 4, Incidencia.ESTATUS_EN_PROCESO, "C4", "Dell inspiron", "03 dic. 2016", Usuario.getAll(this).get(0),Usuario.getAll(this).get(1));

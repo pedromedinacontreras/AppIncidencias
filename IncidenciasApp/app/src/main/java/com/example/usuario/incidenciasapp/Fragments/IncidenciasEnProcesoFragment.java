@@ -47,7 +47,7 @@ public class IncidenciasEnProcesoFragment extends Fragment {
         recyclerView = (RecyclerView) getView().findViewById(R.id.recycler_incidencias_en_proceso);
         lmanager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
         recyclerView.setLayoutManager(lmanager);
-        adapter = new IncidenciaAdapter(getContext(),incidencias);
+        adapter = new IncidenciaAdapter(getContext(),incidencias, Incidencia.ESTATUS_EN_PROCESO);
         recyclerView.setAdapter(adapter);
     }
 
