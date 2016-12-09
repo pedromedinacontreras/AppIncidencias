@@ -6,17 +6,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.usuario.incidenciasapp.Administrador.ListaUsuariosActivity">
+    tools:context="com.example.usuario.incidenciasapp.Administrador.ListaTecnicosActivity">
 
     <android.support.v7.widget.Toolbar
         app:titleTextColor="#FFF"
-        android:id="@+id/toolbar_lista_usuarios"
+        android:id="@+id/toolbar_lista_tecnicos"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:layout_margin="0dp"
         android:padding="0dp"
         android:background="@color/colorPrimary"
-        app:title="Usuarios"
+        app:title="Técnicos"
         android:titleTextAppearance="@style/Base.TextAppearance.Widget.AppCompat.Toolbar.Title"
         android:theme="@style/ThemeOverlay.AppCompat.Light"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
@@ -24,21 +24,21 @@
         app:navigationIcon="@drawable/ic_arrow_back"/>
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_lista_usuarios"
+        android:id="@+id/recycler_lista_tecnicos"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="8"
         android:layout_marginTop="20dp">
     </android.support.v7.widget.RecyclerView>
     <Button
-        android:id="@+id/btn_nuevo_usuario"
+        android:id="@+id/btn_nuevo_tecnico"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="20dp"
         android:layout_weight=".7"
-        android:text="Nuevo usuario"
-        android:textSize="20sp"
+        android:text="Nuevo técnico"
         android:textAllCaps="false"
+        android:textSize="20sp"
         android:textColor="@color/whiteColor"
         android:background="@color/colorPrimary"/>
 </LinearLayout>

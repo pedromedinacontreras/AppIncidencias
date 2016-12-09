@@ -24,19 +24,19 @@ private Context context;
 private int status;
 
 public IncidenciaEnProcesoAdapter(Context context, ArrayList<Incidencia> items, int status) {
-        //this.items = items;
+        this.items = items;
         this.context = context;
-        switch (status) {
-        case Incidencia.ESTATUS_DISPONIBLE:
-        this.items = Incidencia.getIncidenciasDisponibles(context);
-        break;
-        case Incidencia.ESTATUS_EN_PROCESO:
-        this.items = Incidencia.getIncidenciasEnProceso(context);
-        break;
-        case Incidencia.ESTATUS_TERMINADA:
-        this.items = Incidencia.getIncidenciasTerminadas(context);
-        break;
-        }
+//        switch (status) {
+//        case Incidencia.ESTATUS_DISPONIBLE:
+//        this.items = Incidencia.getIncidenciasDisponibles(context);
+//        break;
+//        case Incidencia.ESTATUS_EN_PROCESO:
+//        this.items = Incidencia.getIncidenciasEnProceso(context);
+//        break;
+//        case Incidencia.ESTATUS_TERMINADA:
+//        this.items = Incidencia.getIncidenciasTerminadas(context);
+//        break;
+//        }
         }
 
 @Override
@@ -86,4 +86,8 @@ public class IncidenciaViewHolder extends RecyclerView.ViewHolder{
         tvFecha = (TextView) view.findViewById(R.id.tv_fecha);
     }
 }
+    public void deleteAt(int position) {
+        items.remove(position);
+    }
+
 }

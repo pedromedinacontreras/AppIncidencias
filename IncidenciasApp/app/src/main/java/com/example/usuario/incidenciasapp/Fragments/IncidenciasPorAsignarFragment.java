@@ -83,8 +83,10 @@ public class IncidenciasPorAsignarFragment extends Fragment {
                                         realm.commitTransaction();
                                         Usuario.addEsfuerzo(getContext(), user.getCorreo(), incidencia.getEsfuerzo());
                                         dialogTecnicos.dismiss();
+                                        adapter.deleteAt(posicionRecycler);
                                         adapter.notifyDataSetChanged();
                                         adapterTecnios.notifyDataSetChanged();
+                                        //adapter.notifyItemRemoved(posicionRecycler);
                                     }
                                 }));
                             }

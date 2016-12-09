@@ -24,19 +24,19 @@ public class IncidenciaDisponibleAdapter  extends RecyclerView.Adapter<Incidenci
     private int status;
 
     public IncidenciaDisponibleAdapter(Context context, ArrayList<Incidencia> items, int status) {
-        //this.items = items;
+        this.items = items;
         this.context = context;
-        switch (status) {
-            case Incidencia.ESTATUS_DISPONIBLE:
-                this.items = Incidencia.getIncidenciasDisponibles(context);
-                break;
-            case Incidencia.ESTATUS_EN_PROCESO:
-                this.items = Incidencia.getIncidenciasEnProceso(context);
-                break;
-            case Incidencia.ESTATUS_TERMINADA:
-                this.items = Incidencia.getIncidenciasTerminadas(context);
-                break;
-        }
+//        switch (status) {
+//            case Incidencia.ESTATUS_DISPONIBLE:
+//                this.items = Incidencia.getIncidenciasDisponibles(context);
+//                break;
+//            case Incidencia.ESTATUS_EN_PROCESO:
+//                this.items = Incidencia.getIncidenciasEnProceso(context);
+//                break;
+//            case Incidencia.ESTATUS_TERMINADA:
+//                this.items = Incidencia.getIncidenciasTerminadas(context);
+//                break;
+//        }
     }
 
     @Override
@@ -84,6 +84,10 @@ public class IncidenciaDisponibleAdapter  extends RecyclerView.Adapter<Incidenci
             tvTecnicoAsignado = (TextView) view.findViewById(R.id.tv_tecnico_asignado);
             tvFecha = (TextView) view.findViewById(R.id.tv_fecha);
         }
+    }
+
+    public void deleteAt(int position) {
+        items.remove(position);
     }
 
 //    public interface AccionRecyclerInterface {

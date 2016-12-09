@@ -13,18 +13,16 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RatingBar;
+import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.example.usuario.incidenciasapp.Adapters.IncidenciaAdapter;
 import com.example.usuario.incidenciasapp.Adapters.UsuarioAdapter;
-import com.example.usuario.incidenciasapp.Models.Incidencia;
 import com.example.usuario.incidenciasapp.Models.Usuario;
 import com.example.usuario.incidenciasapp.R;
 
 import java.util.ArrayList;
 
-public class ListaUsuariosActivity extends AppCompatActivity {
+public class ListaTecnicosActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager lmanager;
@@ -36,14 +34,13 @@ public class ListaUsuariosActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lista_usuarios);
-        toolbar = (Toolbar) findViewById(R.id.toolbar_lista_usuarios);
+        setContentView(R.layout.activity_lista_tecnicos);
+        toolbar = (Toolbar) findViewById(R.id.toolbar_lista_tecnicos);
         setSupportActionBar(toolbar);
+        btnNewUser = (Button) findViewById(R.id.btn_nuevo_tecnico);
 
-        btnNewUser = (Button) findViewById(R.id.btn_nuevo_usuario);
-
-        recyclerView = (RecyclerView) findViewById(R.id.recycler_lista_usuarios);
-        usuarios = Usuario.getEmpleados(this);
+        recyclerView = (RecyclerView) findViewById(R.id.recycler_lista_tecnicos);
+        usuarios = Usuario.getTecnicos(this);
         lmanager = new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
         recyclerView.setLayoutManager(lmanager);
         adapter = new UsuarioAdapter(this,usuarios);
@@ -70,23 +67,23 @@ public class ListaUsuariosActivity extends AppCompatActivity {
 
     public Dialog createNuevoUsuarioDialog(){
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        LayoutInflater inflater = ListaUsuariosActivity.this.getLayoutInflater();
-        final View view = inflater.inflate(R.layout.dialog_nuevo_usuario,null);
+        LayoutInflater inflater = ListaTecnicosActivity.this.getLayoutInflater();
+        final View view = inflater.inflate(R.layout.dialog_nuevo_tecnico,null);
+
         final EditText edtNombre = (EditText) view.findViewById(R.id.edt_nombre_usuario_nuevo);
         final EditText edtTel = (EditText) view.findViewById(R.id.edt_telefono_usuario_nuevo);
         final EditText edtCorreo = (EditText) view.findViewById(R.id.edt_correo_usuario_nuevo);
         final EditText edtContraseña = (EditText) view.findViewById(R.id.edt_contrasena_usuario_nuevo);
         EditText edtEquipo = (EditText) view.findViewById(R.id.edt_equipo_usuario_nuevo);
-//        textComentario = (EditText) view.findViewById(R.id.comentario_valorado);
-//        ratingBarComentario = (RatingBar) view.findViewById(R.id.rating_producto);
+        final Spinner spinnerEspecialidad = (Spinner) view.findViewById(R.id.spinner_especialidad_usuario_nuevo);
         builder.setView(view)
-                .setTitle("Nuevo usuario")
+                .setTitle("Nuevo técnico")
                 .setPositiveButton("GUARDAR", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        Usuario.newUsuario(ListaUsuariosActivity.this, edtTel.getText().toString(), edtCorreo.getText().toString(),
-                                edtContraseña.getText().toString(), Usuario.TIPO_EMPLEADO, Usuario.SIN_ESPECIALIDAD, edtNombre.getText().toString());
-                        Toast.makeText(ListaUsuariosActivity.this, "Usuario creado", Toast.LENGTH_SHORT).show();
+                        Usuario.newUsuario(ListaTecnicosActivity.this, edtTel.getText().toString(), edtCorreo.getText().toString(),
+                                edtContraseña.getText().toString(), Usuario.TIPO_TECNICO, spinnerEspecialidad.getSelectedItem().toString(), edtNombre.getText().toString());
+                        Toast.makeText(ListaTecnicosActivity.this, "Usuario creado", Toast.LENGTH_SHORT).show();
                         adapter.notifyDataSetChanged();
                         dialogInterface.dismiss();
                     }

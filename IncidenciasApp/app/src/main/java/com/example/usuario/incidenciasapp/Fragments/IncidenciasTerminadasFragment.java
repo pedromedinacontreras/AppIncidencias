@@ -97,4 +97,7 @@ public class IncidenciasTerminadasFragment extends Fragment {
                 });
         return builder.create();
     }
+    public void notifyDataChanged(){
+        adapter.notifyDataSetChanged();
+    }
 }

@@ -19,7 +19,8 @@
         <activity android:name=".SignUpActivity" />
         <activity android:name=".Administrador.MainAdministradorActivity" />
         <activity android:name=".Administrador.IncidenciasAdministradorActivity" />
-        <activity android:name=".Administrador.ListaUsuariosActivity"></activity>
+        <activity android:name=".Administrador.ListaUsuariosActivity" />
+        <activity android:name=".Administrador.ListaTecnicosActivity"></activity>
     </application>
 
 </manifest>

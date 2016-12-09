@@ -69,7 +69,7 @@ public class IncidenciasEnProcesoFragment extends Fragment {
         }));
     }
 
-    public Dialog createDetalleIncidenciaDialog(int position){
+    public Dialog createDetalleIncidenciaDialog(final int position){
         final AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         incidencia = incidencias.get(position);
         LayoutInflater inflater = getActivity().getLayoutInflater();
@@ -106,11 +106,16 @@ public class IncidenciasEnProcesoFragment extends Fragment {
                         realm.commitTransaction();
                         Usuario user = incidencia.getUsuarioTecnico();
                         Usuario.restarEsfuerzo(getContext(), user.getCorreo(), incidencia.getEsfuerzo());
+                        adapter.deleteAt(position);
                         adapter.notifyDataSetChanged();
                         dialog.dismiss();
                     }
                 });
         return builder.create();
+    }
+
+    public void notifyDataChanged(){
+        adapter.notifyDataSetChanged();
     }
 
 }

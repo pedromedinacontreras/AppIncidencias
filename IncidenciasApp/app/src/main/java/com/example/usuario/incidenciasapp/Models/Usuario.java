@@ -29,6 +29,7 @@ public class Usuario extends RealmObject {
     private String contraseña;
     private int tipoUsuario;
     private String especialidad;
+    private String nombre;
     private int esfuerzo;
 
     public Usuario() {
@@ -82,6 +83,14 @@ public class Usuario extends RealmObject {
         this.esfuerzo = esfuerzo;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
     public static ArrayList<Usuario> getAll(android.content.Context context){
         ArrayList<Usuario> usuarioArrayList= new ArrayList<>();
         Realm.init(context);
@@ -94,7 +103,7 @@ public class Usuario extends RealmObject {
         return usuarioArrayList;
     }
 
-    public static void newUsuario(android.content.Context context, String pkUsuario, String correo, String contraseña, int tipoUsuario, String especialidad){
+    public static void newUsuario(android.content.Context context, String pkUsuario, String correo, String contraseña, int tipoUsuario, String especialidad, String nombre){
         Realm.init(context);
         Realm realm = Realm.getDefaultInstance();
         realm.beginTransaction();
@@ -103,6 +112,7 @@ public class Usuario extends RealmObject {
         user.setContraseña(contraseña);
         user.setTipoUsuario(tipoUsuario);
         user.setEspecialidad(especialidad);
+        user.setNombre(nombre);
         user.setEsfuerzo(0);
         realm.commitTransaction();
     }
