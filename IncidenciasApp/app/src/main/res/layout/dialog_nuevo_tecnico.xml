@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="400dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="400dp"
     android:layout_height="700dp"
     android:padding="20dp"
     android:gravity="center">
@@ -61,6 +63,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="20sp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Especialidad"
+            android:textSize="22sp"/>
+        <Spinner
+            android:id="@+id/spinner_especialidad_usuario_nuevo"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:entries="@array/especialidades"
+            android:prompt="@string/prompt_redes">
+
+        </Spinner>
     </LinearLayout>
     <LinearLayout
         android:visibility="gone"
@@ -94,11 +109,11 @@
             android:textSize="20sp"
             android:layout_weight="1"/>
         <CheckBox
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:text="Jira"
-        android:textSize="20sp"
-        android:layout_weight="1"/>
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:text="Jira"
+            android:textSize="20sp"
+            android:layout_weight="1"/>
         <CheckBox
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -118,5 +133,4 @@
             android:textSize="20sp"
             android:layout_weight="1"/>
     </LinearLayout>
-
 </LinearLayout>

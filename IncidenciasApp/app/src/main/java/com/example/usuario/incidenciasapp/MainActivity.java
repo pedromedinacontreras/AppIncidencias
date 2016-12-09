@@ -22,11 +22,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         if(Usuario.getAll(MainActivity.this).size() < 1) {
-            Usuario.newUsuario(this, "6672222222", "pedro@gmail.com", "1234", Usuario.TIPO_ADMINISTRADOR, Usuario.SIN_ESPECIALIDAD);
-            Usuario.newUsuario(this, "6672640676", "abrahams@gmail.com", "1234", Usuario.TIPO_TECNICO, Usuario.REDES);
-            Usuario.newUsuario(this, "6672640675", "zavalza@gmail.com", "1234", Usuario.TIPO_TECNICO, Usuario.HARDWARE);
-            Usuario.newUsuario(this, "6672640633", "perry@gmail.com", "1234", Usuario.TIPO_TECNICO, Usuario.SOFTWARE);
-            Usuario.newUsuario(this, "6672444444", "gordaney@gmail.com", "1234", Usuario.TIPO_EMPLEADO, Usuario.SIN_ESPECIALIDAD);
+            Usuario.newUsuario(this, "6672222222", "pedro@gmail.com", "1234", Usuario.TIPO_ADMINISTRADOR, Usuario.SIN_ESPECIALIDAD, "Pedro Medina");
+            Usuario.newUsuario(this, "6672640676", "abrahams@gmail.com", "1234", Usuario.TIPO_TECNICO, Usuario.REDES, "Abrahams Gaxiola");
+            Usuario.newUsuario(this, "6672640675", "zavalza@gmail.com", "1234", Usuario.TIPO_TECNICO, Usuario.HARDWARE, "Rafael Zavalza");
+            Usuario.newUsuario(this, "6672640633", "perry@gmail.com", "1234", Usuario.TIPO_TECNICO, Usuario.SOFTWARE, "Perry Madrigal");
+            Usuario.newUsuario(this, "6672444444", "gordaney@gmail.com", "1234", Usuario.TIPO_EMPLEADO, Usuario.SIN_ESPECIALIDAD, "Gordaney López");
         }
 
         if(Incidencia.getAll(MainActivity.this).size() < 1) {

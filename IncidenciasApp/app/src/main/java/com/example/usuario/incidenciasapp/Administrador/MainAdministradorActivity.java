@@ -49,6 +49,8 @@ public class MainAdministradorActivity extends AppCompatActivity {
                 break;
             case R.id.btn_admin_tecnicos:
                 Toast.makeText(this, "btn_admin_tecnicos", Toast.LENGTH_SHORT).show();
+                Intent iListaTecnicos = new Intent(MainAdministradorActivity.this, ListaTecnicosActivity.class);
+                startActivity(iListaTecnicos);
                 break;
             case R.id.btn_admin_equipos:
                 Toast.makeText(this, "btn_admin_equipos", Toast.LENGTH_SHORT).show();
