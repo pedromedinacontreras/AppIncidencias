@@ -34,9 +34,11 @@ public class UsuarioAdapter extends RecyclerView.Adapter<UsuarioAdapter.UsuarioV
     @Override
     public void onBindViewHolder(UsuarioAdapter.UsuarioViewHolder holder, int i) {
         final Usuario usuario = items.get(i);
-
-        holder.tvNombreUsuario.setText(usuario.getCorreo());
+        holder.tvCorreo.setText(usuario.getCorreo());
+        holder.tvEspecialidad.setText(usuario.getEspecialidad());
+        holder.tvNombreUsuario.setText(usuario.getNombre());
         holder.tvEquipo.setText(usuario.getPkUsuario());
+        holder.tvEsfuerzo.setText(String.valueOf(usuario.getEsfuerzo()));
         switch (usuario.getTipoUsuario()) {
             case Usuario.TIPO_ADMINISTRADOR:
                 holder.tvPuesto.setText("Administrador");
@@ -64,6 +66,9 @@ public class UsuarioAdapter extends RecyclerView.Adapter<UsuarioAdapter.UsuarioV
         TextView tvNombreUsuario;
         TextView tvPuesto;
         TextView tvEquipo;
+        TextView tvCorreo;
+        TextView tvEspecialidad;
+        TextView tvEsfuerzo;
 
 
         public UsuarioViewHolder(View view){
@@ -71,6 +76,9 @@ public class UsuarioAdapter extends RecyclerView.Adapter<UsuarioAdapter.UsuarioV
             tvNombreUsuario = (TextView) view.findViewById(R.id.tv_nombre_usuario);
             tvPuesto = (TextView) view.findViewById(R.id.tv_puesto);
             tvEquipo = (TextView) view.findViewById(R.id.tv_equipo);
+            tvCorreo = (TextView) view.findViewById(R.id.tv_email_usuario);
+            tvEspecialidad = (TextView) view.findViewById((R.id.tv_especialidad));
+            tvEsfuerzo = (TextView) view.findViewById(R.id.tv_esfuerzo);
         }
     }
 }
