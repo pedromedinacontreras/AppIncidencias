@@ -21,10 +21,7 @@
         <activity android:name=".Administrador.IncidenciasAdministradorActivity" />
         <activity android:name=".Administrador.ListaUsuariosActivity" />
         <activity android:name=".Administrador.ListaTecnicosActivity" />
-        <activity
-            android:name=".Main2Activity"
-            android:label="@string/title_activity_main2"
-            android:theme="@style/AppTheme"></activity>
+        <activity android:name=".Administrador.ListaEquipoActivity"></activity>
     </application>
 
 </manifest>

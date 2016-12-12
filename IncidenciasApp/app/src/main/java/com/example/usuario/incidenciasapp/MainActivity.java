@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
             Usuario.newUsuario(this, "6672640675", "zavalza@gmail.com", "1234", Usuario.TIPO_TECNICO, Usuario.HARDWARE, "Rafael Zavalza");
             Usuario.newUsuario(this, "6672640633", "perry@gmail.com", "1234", Usuario.TIPO_TECNICO, Usuario.SOFTWARE, "Perry Madrigal");
             Usuario.newUsuario(this, "6672444444", "gordaney@gmail.com", "1234", Usuario.TIPO_EMPLEADO, Usuario.SIN_ESPECIALIDAD, "Gordaney López");
+            Usuario.newUsuario(this, "0000000000", "general@general.com", "1234", Usuario.TIPO_ADMINISTRADOR, Usuario.SIN_ESPECIALIDAD, "Usuario general");
         }
 
         if(Incidencia.getAll(MainActivity.this).size() < 1) {

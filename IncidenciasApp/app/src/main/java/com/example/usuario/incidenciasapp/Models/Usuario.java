@@ -182,4 +182,11 @@ public class Usuario extends RealmObject {
         user.setEsfuerzo(nuevoEsfuerzo);
         realm.commitTransaction();
     }
+
+    public static Usuario getUsuarioGeneral(android.content.Context context) {
+        Realm.init(context);
+        Realm realm = Realm.getDefaultInstance();
+        Usuario usuario = realm.where(Usuario.class).equalTo("pkUsuario", "0000000000").findFirst();
+        return usuario;
+    }
 }
