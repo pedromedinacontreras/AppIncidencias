@@ -7,10 +7,10 @@
     //colores basicos
     <color name="whiteColor">#FFFFFF</color>
     <color name="blackColor">#000</color>
-    <color name="background_detalle_product">#E2E2E2</color>
-    <color name="lightGray">#E2E2E2</color>
+    <color name="background_detalle_product">#e2e2e2</color>
+    <color name="lightGray">#e2e2e2</color>
     <color name="yellow">#ffdd00</color>
-    <color name="lightWhite">#88FFFFFF</color>
+    <color name="lightWhite">#88ffffff</color>
 
     <color name="unselectedRazon">#494747</color>
     <color name="SelectedRazon">#8a000000</color>
