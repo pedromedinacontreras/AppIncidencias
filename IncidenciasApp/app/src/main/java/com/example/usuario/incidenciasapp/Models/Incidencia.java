@@ -18,9 +18,14 @@ public class Incidencia extends RealmObject {
     public static final int ESTATUS_DISPONIBLE = 0;
     public static final int ESTATUS_EN_PROCESO = 1;
     public static final int ESTATUS_TERMINADA = 2;
+    public static final int ESFUERZO_BAJO = 1;
+    public static final int ESFUERZO_MEDIO = 2;
+    public static final int ESFUERZO_ALTO = 3;
 
     @PrimaryKey
     private Integer pkIncidencia;
+    private String titulo;
+    private String Categoria;
     private String descripcion;
     private Integer prioridad;
     private String ubicacion;
@@ -29,6 +34,7 @@ public class Incidencia extends RealmObject {
     private String fechaCreacion;
     private Usuario usuarioLevanta;
     private Usuario usuarioTecnico;
+    private int esfuerzo;
 
     public Integer getPkIncidencia() {
         return pkIncidencia;
@@ -102,9 +108,33 @@ public class Incidencia extends RealmObject {
         this.usuarioTecnico = usuarioTecnico;
     }
 
+    public String getCategoria() {
+        return Categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        Categoria = categoria;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public int getEsfuerzo() {
+        return esfuerzo;
+    }
+
+    public void setEsfuerzo(int esfuerzo) {
+        this.esfuerzo = esfuerzo;
+    }
+
     public static void newIncidencia(Context context, String descripcion, int prioridad, int status,
                                      String ubicacion, String equipoAfectado, String fechaCreacion,
-                                     Usuario usuarioLevanta, Usuario usuarioTecnico) {
+                                     Usuario usuarioLevanta, String titulo, String categoria, int esfuerzo) {
         Realm.init(context);
         Realm realm = Realm.getDefaultInstance();
         realm.beginTransaction();
@@ -116,7 +146,9 @@ public class Incidencia extends RealmObject {
         incidencia.setEquipoAfectado(equipoAfectado);
         incidencia.setFechaCreacion(fechaCreacion);
         incidencia.setUsuarioLevanta(usuarioLevanta);
-        incidencia.setUsuarioTecnico(usuarioTecnico);
+        incidencia.setTitulo(titulo);
+        incidencia.setCategoria(categoria);
+        incidencia.setEsfuerzo(esfuerzo);
         realm.commitTransaction();
     }
 
@@ -127,6 +159,15 @@ public class Incidencia extends RealmObject {
         RealmResults<Incidencia> incidenciaRealmResults = realm.where(Incidencia.class).findAll();
         nextId = incidenciaRealmResults.size();
         return nextId + 1001;
+    }
+
+    public static ArrayList<Incidencia> getAll(Context context) {
+        ArrayList<Incidencia> incidencias= new ArrayList<>();
+        Realm.init(context);
+        Realm realm = Realm.getDefaultInstance();
+        RealmResults<Incidencia> incidenciaRealmResults = realm.where(Incidencia.class).findAll();
+        incidencias.addAll(incidenciaRealmResults);
+        return incidencias;
     }
 
     public static ArrayList<Incidencia> getIncidenciasDisponibles(Context context) {

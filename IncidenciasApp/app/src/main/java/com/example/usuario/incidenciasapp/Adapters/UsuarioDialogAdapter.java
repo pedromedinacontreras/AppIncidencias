@@ -38,9 +38,9 @@ public class UsuarioDialogAdapter  extends RecyclerView.Adapter<UsuarioDialogAda
         final Usuario usuario = items.get(i);
 
         holder.tvNombre.setText(usuario.getCorreo());
-        holder.tvEspecialidad.setText("Aquí agrega una especialidad");
+        holder.tvEspecialidad.setText(usuario.getEspecialidad());
         //TODO: Sumar la calificacion de todos los pendientes de cierto usuario
-        holder.tvCalificacionPendientes.setText("10?");
+        holder.tvCalificacionPendientes.setText(usuario.getEsfuerzo() + "");
     }
 
     @Override
