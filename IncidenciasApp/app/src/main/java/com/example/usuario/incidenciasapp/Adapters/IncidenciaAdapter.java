@@ -55,6 +55,8 @@ public class IncidenciaAdapter extends RecyclerView.Adapter<IncidenciaAdapter.In
         holder.tvUsuarioLevanta.setText(incidencia.getUsuarioLevanta().getCorreo());
         holder.tvTecnicoAsignado.setText(incidencia.getUsuarioTecnico().getCorreo());
         holder.tvEquipoAfectado.setText(incidencia.getEquipoAfectado());
+        holder.tvEsfuerzo.setText(incidencia.getEsfuerzo()+"");
+        holder.tvPrioridad.setText(incidencia.getPrioridad()+"");
     }
 
     @Override
@@ -69,6 +71,8 @@ public class IncidenciaAdapter extends RecyclerView.Adapter<IncidenciaAdapter.In
         TextView tvUsuarioLevanta;
         TextView tvTecnicoAsignado;
         TextView tvFecha;
+        TextView tvEsfuerzo;
+        TextView tvPrioridad;
 
         public IncidenciaViewHolder(View view){
             super(view);
@@ -77,6 +81,8 @@ public class IncidenciaAdapter extends RecyclerView.Adapter<IncidenciaAdapter.In
             tvUsuarioLevanta = (TextView) view.findViewById(R.id.tv_usuario_levanta);
             tvTecnicoAsignado = (TextView) view.findViewById(R.id.tv_tecnico_asignado);
             tvFecha = (TextView) view.findViewById(R.id.tv_fecha);
+            tvEsfuerzo = (TextView) view.findViewById(R.id.tv_esfuerzo);
+            tvPrioridad = (TextView) view.findViewById(R.id.tv_prioridad);
         }
     }
 
