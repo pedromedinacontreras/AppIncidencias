@@ -20,7 +20,8 @@
         <activity android:name=".Administrador.MainAdministradorActivity" />
         <activity android:name=".Administrador.IncidenciasAdministradorActivity" />
         <activity android:name=".Administrador.ListaUsuariosActivity" />
-        <activity android:name=".Administrador.ListaTecnicosActivity"></activity>
+        <activity android:name=".Administrador.ListaTecnicosActivity" />
+        <activity android:name=".Administrador.ListaEquipoActivity"></activity>
     </application>
 
 </manifest>
