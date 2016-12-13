@@ -9,9 +9,13 @@ import android.widget.Toast;
 
 import com.example.usuario.incidenciasapp.Administrador.MainAdministradorActivity;
 import com.example.usuario.incidenciasapp.Models.Categoria;
+import com.example.usuario.incidenciasapp.Models.Descripcion;
+import com.example.usuario.incidenciasapp.Models.Equipo;
 import com.example.usuario.incidenciasapp.Models.Incidencia;
 import com.example.usuario.incidenciasapp.Models.Usuario;
 import com.example.usuario.incidenciasapp.Models.UsuarioLogeado;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private final int DURACION_SPLASH = 2000;
@@ -37,6 +41,12 @@ public class MainActivity extends AppCompatActivity {
             Incidencia.newIncidencia(this,"No puedo iniciar windows", 4, Incidencia.ESTATUS_DISPONIBLE, "C4", "Dell inspiron", "03 dic. 2016", Usuario.getEmpleados(this).get(0), "Falla en windows", (Categoria.SOFTWARE), Incidencia.ESFUERZO_MEDIO);
             Incidencia.newIncidencia(this,"No puedo abrir el feis", 4, Incidencia.ESTATUS_DISPONIBLE, "D3", "HP inyección de tinta", "02 dic. 2016", Usuario.getEmpleados(this).get(0), "Feis falla", (Categoria.REDES), Incidencia.ESFUERZO_BAJO);
             Incidencia.newIncidencia(this,"No prende el proyector", 4, Incidencia.ESTATUS_DISPONIBLE, "CCDM", "Benq", "30 nov. 2016", Usuario.getEmpleados(this).get(0), "Proyector no prende", (Categoria.HARDWARE), Incidencia.ESFUERZO_MEDIO);
+        }
+
+        if (Equipo.getAll(MainActivity.this).size() < 1) {
+            String descripcion1 = "Pantalla de 24 pulgadas\nResolución HD\nUltra delgada";
+            Equipo.newEquipo(this,"#1a2b3c4d","LG", descripcion1, "$2,000", "pedro@gmail.com","Monitor");
+            Equipo.newEquipo(this,"#9P7K6J5H","Samsung", descripcion1, "$1,999", "zavalza@gmail.com","Pantalla plana");
         }
 
         for(Usuario user : Usuario.getAll(this)){

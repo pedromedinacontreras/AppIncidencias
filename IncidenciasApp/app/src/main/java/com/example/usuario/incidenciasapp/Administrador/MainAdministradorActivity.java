@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.usuario.incidenciasapp.LoginActivity;
+import com.example.usuario.incidenciasapp.Models.Incidencia;
 import com.example.usuario.incidenciasapp.Models.UsuarioLogeado;
 import com.example.usuario.incidenciasapp.R;
 
@@ -54,6 +55,8 @@ public class MainAdministradorActivity extends AppCompatActivity {
                 break;
             case R.id.btn_admin_equipos:
                 Toast.makeText(this, "btn_admin_equipos", Toast.LENGTH_SHORT).show();
+                Intent iListaEquipo = new Intent(MainAdministradorActivity.this, ListaEquipoActivity.class);
+                startActivity(iListaEquipo);
                 break;
             default:
                 break;
