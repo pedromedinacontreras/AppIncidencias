@@ -12,6 +12,7 @@ import com.example.usuario.incidenciasapp.administrador.MainAdministradorActivit
 import com.example.usuario.incidenciasapp.models.Usuario;
 import com.example.usuario.incidenciasapp.models.UsuarioLogeado;
 import com.example.usuario.incidenciasapp.tecnico.MainTecnicoActivity;
+import com.example.usuario.incidenciasapp.usuario.MainUsuarioActivity;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -33,7 +34,6 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 final String correo = edtCorreo.getText().toString();
                 final String contraseña = edtContrasena.getText().toString();
-
                 if(correo.isEmpty() || contraseña.isEmpty())
                 {
                     if(correo.isEmpty())
