@@ -292,5 +292,18 @@ public class CatalogoIncidencia extends RealmObject {
         return position;
     }
 
+    public static void newCatalogo(Context context, String nombre, int prioridad, int tiempo, String area, String descripcion, String solucion){
+        Realm.init(context);
+        Realm realm = Realm.getDefaultInstance();
+        realm.beginTransaction();
+        CatalogoIncidencia CI = realm.createObject(CatalogoIncidencia.class, CatalogoIncidencia.newPosition(context));
+        CI.setNombre(nombre);
+        CI.setPrioridad(prioridad);
+        CI.setTiempoSolucion(tiempo);
+        CI.setArea(area);
+        CI.setDescripcion(descripcion);
+        CI.setPosibleSolucion(solucion);
+        realm.commitTransaction();
+    }
 }
 

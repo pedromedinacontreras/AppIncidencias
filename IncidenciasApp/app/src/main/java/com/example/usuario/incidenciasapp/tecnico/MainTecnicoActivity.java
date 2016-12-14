@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.usuario.incidenciasapp.CatalogoActivity;
 import com.example.usuario.incidenciasapp.LoginActivity;
 import com.example.usuario.incidenciasapp.models.UsuarioLogeado;
 import com.example.usuario.incidenciasapp.R;
@@ -52,6 +53,9 @@ public class MainTecnicoActivity extends AppCompatActivity {
                 iListaEquipo.putExtra("tecnico", true);
                 startActivity(iListaEquipo);
                 break;
+            case R.id.btn_catalogo:
+                Intent iCatalogo = new Intent(MainTecnicoActivity.this, CatalogoActivity.class);
+                startActivity(iCatalogo);
             default:
                 break;
         }
