@@ -9,6 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.usuario.incidenciasapp.LoginActivity;
+import com.example.usuario.incidenciasapp.models.UsuarioLogeado;
 import com.example.usuario.incidenciasapp.R;
 import com.example.usuario.incidenciasapp.administrador.IncidenciasAdministradorActivity;
 import com.example.usuario.incidenciasapp.administrador.ListaEquipoActivity;
