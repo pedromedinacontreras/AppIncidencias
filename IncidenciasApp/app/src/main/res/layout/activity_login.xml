@@ -34,14 +34,15 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="50sp"
+            android:textSize="40sp"
             android:textStyle="bold|italic"
             android:text="Incidencias Roket"/>
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1.5"
+        android:layout_weight="1"
         android:orientation="vertical"
         android:padding="10dp">
         <TextView
@@ -49,7 +50,7 @@
             android:layout_height="0dp"
             android:layout_weight="4"
             android:text="Email"
-            android:textSize="30sp"
+            android:textSize="25sp"
             android:gravity="bottom"
             android:textStyle="italic|bold"/>
         <EditText
@@ -57,14 +58,15 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="6"
-            android:textSize="40sp"
+            android:textSize="25sp"
             android:singleLine="true"
             android:hint="correo@ejemplo.com"/>
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1.5"
+        android:layout_weight="1"
         android:orientation="vertical"
         android:padding="10dp">
         <TextView
@@ -72,7 +74,7 @@
             android:layout_height="0dp"
             android:layout_weight="4"
             android:text="Password"
-            android:textSize="30sp"
+            android:textSize="25sp"
             android:gravity="bottom"
             android:textStyle="italic|bold"/>
         <EditText
@@ -97,7 +99,10 @@
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:text="Acceder"
-            android:textSize="40sp"
+            android:background="@color/rojo"
+            android:layout_margin="20dp"
+            android:textColor="@color/whiteColor"
+            android:textSize="30sp"
             android:textStyle="italic|bold"/>
     </LinearLayout>
 </LinearLayout>

@@ -78,6 +78,24 @@
                 android:layout_height="match_parent"
                 android:textSize="20sp"/>
         </LinearLayout>
+    <LinearLayout
+        android:layout_marginLeft="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Equipo"
+            android:textSize="22sp"/>
+        <EditText
+            android:id="@+id/edt_equipo_usuario_nuevo"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:textSize="20sp"/>
+    </LinearLayout>
 
     <LinearLayout
         android:visibility="gone"
