@@ -1,4 +1,4 @@
-package com.example.usuario.incidenciasapp.Fragments;
+package com.example.usuario.incidenciasapp.fragments;
 
 
 import android.app.Dialog;
@@ -14,17 +14,15 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.usuario.incidenciasapp.Adapters.IncidenciaAdapter;
-import com.example.usuario.incidenciasapp.Adapters.IncidenciaDisponibleAdapter;
-import com.example.usuario.incidenciasapp.Adapters.UsuarioDialogAdapter;
-import com.example.usuario.incidenciasapp.Administrador.ListaUsuariosActivity;
-import com.example.usuario.incidenciasapp.Models.Incidencia;
-import com.example.usuario.incidenciasapp.Models.Usuario;
+import com.example.usuario.incidenciasapp.adapters.IncidenciaDisponibleAdapter;
+import com.example.usuario.incidenciasapp.adapters.UsuarioDialogAdapter;
+import com.example.usuario.incidenciasapp.administrador.IncidenciasAdministradorActivity;
+import com.example.usuario.incidenciasapp.models.Incidencia;
+import com.example.usuario.incidenciasapp.models.Usuario;
 import com.example.usuario.incidenciasapp.R;
 import com.example.usuario.incidenciasapp.RecyclerItemClickListener;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import io.realm.Realm;
 
@@ -83,10 +81,11 @@ public class IncidenciasPorAsignarFragment extends Fragment {
                                         realm.commitTransaction();
                                         Usuario.addEsfuerzo(getContext(), user.getCorreo(), incidencia.getEsfuerzo());
                                         dialogTecnicos.dismiss();
-                                        adapter.deleteAt(posicionRecycler);
+                                        updateAdapter();
+                                        IncidenciasAdministradorActivity administradorActivity = (IncidenciasAdministradorActivity) getActivity();
+                                        administradorActivity.updateAdapter();
                                         adapter.notifyDataSetChanged();
                                         adapterTecnios.notifyDataSetChanged();
-                                        //adapter.notifyItemRemoved(posicionRecycler);
                                     }
                                 }));
                             }
@@ -153,5 +152,11 @@ public class IncidenciasPorAsignarFragment extends Fragment {
                     }
                 });
         return builder.create();
+    }
+
+    private void updateAdapter(){
+        incidencias = Incidencia.getIncidenciasDisponibles(getContext());
+        adapter = new IncidenciaDisponibleAdapter(getContext(),incidencias, Incidencia.ESTATUS_DISPONIBLE);
+        recyclerView.setAdapter(adapter);
     }
 }

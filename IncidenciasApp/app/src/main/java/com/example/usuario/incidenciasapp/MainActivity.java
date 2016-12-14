@@ -5,17 +5,14 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Toast;
 
-import com.example.usuario.incidenciasapp.Administrador.MainAdministradorActivity;
-import com.example.usuario.incidenciasapp.Models.Categoria;
-import com.example.usuario.incidenciasapp.Models.Descripcion;
-import com.example.usuario.incidenciasapp.Models.Equipo;
-import com.example.usuario.incidenciasapp.Models.Incidencia;
-import com.example.usuario.incidenciasapp.Models.Usuario;
-import com.example.usuario.incidenciasapp.Models.UsuarioLogeado;
-
-import java.util.ArrayList;
+import com.example.usuario.incidenciasapp.administrador.MainAdministradorActivity;
+import com.example.usuario.incidenciasapp.models.Categoria;
+import com.example.usuario.incidenciasapp.models.Equipo;
+import com.example.usuario.incidenciasapp.models.Incidencia;
+import com.example.usuario.incidenciasapp.models.Usuario;
+import com.example.usuario.incidenciasapp.models.UsuarioLogeado;
+import com.example.usuario.incidenciasapp.tecnico.MainTecnicoActivity;
 
 public class MainActivity extends AppCompatActivity {
     private final int DURACION_SPLASH = 2000;
@@ -59,6 +56,8 @@ public class MainActivity extends AppCompatActivity {
                     UsuarioLogeado usuarioLogeado = UsuarioLogeado.getUsuarioLogeado(MainActivity.this);
                     if(usuarioLogeado.getUsuario().getTipoUsuario() == Usuario.TIPO_ADMINISTRADOR){
                         intent = new Intent(MainActivity.this, MainAdministradorActivity.class);
+                    } else if (usuarioLogeado.getUsuario().getTipoUsuario() == Usuario.TIPO_TECNICO) {
+                        intent = new Intent(MainActivity.this, MainTecnicoActivity.class);
                     }
                     //Aquí va el resto de páginas principales, de acuerdo al tipo de usuario
                 }

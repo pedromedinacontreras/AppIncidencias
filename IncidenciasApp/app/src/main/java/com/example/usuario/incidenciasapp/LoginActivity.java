@@ -3,22 +3,14 @@ package com.example.usuario.incidenciasapp;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.usuario.incidenciasapp.Administrador.MainAdministradorActivity;
-import com.example.usuario.incidenciasapp.Models.Usuario;
-import com.example.usuario.incidenciasapp.Models.UsuarioLogeado;
-
-import java.util.ArrayList;
-
-import io.realm.Realm;
-import io.realm.RealmList;
-import io.realm.RealmQuery;
-import io.realm.RealmResults;
+import com.example.usuario.incidenciasapp.administrador.MainAdministradorActivity;
+import com.example.usuario.incidenciasapp.models.Usuario;
+import com.example.usuario.incidenciasapp.models.UsuarioLogeado;
 
 public class LoginActivity extends AppCompatActivity {
 

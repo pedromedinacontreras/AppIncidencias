@@ -1,24 +1,15 @@
-package com.example.usuario.incidenciasapp.Adapters;
+package com.example.usuario.incidenciasapp.adapters;
 
-import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.FrameLayout;
-import android.widget.LinearLayout;
-import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.usuario.incidenciasapp.Administrador.ListaTecnicosActivity;
-import com.example.usuario.incidenciasapp.Models.Equipo;
-import com.example.usuario.incidenciasapp.Models.Usuario;
+import com.example.usuario.incidenciasapp.models.Equipo;
 import com.example.usuario.incidenciasapp.R;
 
 import java.util.ArrayList;

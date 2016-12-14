@@ -1,4 +1,4 @@
-package com.example.usuario.incidenciasapp.Adapters;
+package com.example.usuario.incidenciasapp.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -7,8 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.usuario.incidenciasapp.Models.Incidencia;
-import com.example.usuario.incidenciasapp.Models.Usuario;
+import com.example.usuario.incidenciasapp.models.Usuario;
 import com.example.usuario.incidenciasapp.R;
 
 import java.util.ArrayList;
