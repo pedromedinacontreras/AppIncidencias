@@ -36,9 +36,16 @@ public class IncidenciasEnProcesoTecnicoFragment extends Fragment {
     ArrayList<Incidencia> incidencias = new ArrayList<>();
     Incidencia incidencia;
     Dialog dialog;
+    private boolean isUsuario;
 
     public IncidenciasEnProcesoTecnicoFragment() {
         // Required empty public constructor
+    }
+
+    public static IncidenciasEnProcesoTecnicoFragment create(boolean isUsuario) {
+        IncidenciasEnProcesoTecnicoFragment f = new IncidenciasEnProcesoTecnicoFragment();
+        f.isUsuario = isUsuario;
+        return f;
     }
 
     @Override
@@ -55,7 +62,11 @@ public class IncidenciasEnProcesoTecnicoFragment extends Fragment {
     }
 
     private void asignaValores(){
-        incidencias = Incidencia.getIncidenciasEnProcesoByUser(getContext());
+        if (isUsuario) {
+            incidencias = Incidencia.getIncidenciasEnProcesoByUser(getContext());
+        } else {
+            incidencias = Incidencia.getIncidenciasEnProcesoByTecnico(getContext());
+        }
         recyclerView = (RecyclerView) getView().findViewById(R.id.recycler_incidencias_en_proceso);
         lmanager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
         recyclerView.setLayoutManager(lmanager);
@@ -122,7 +133,11 @@ public class IncidenciasEnProcesoTecnicoFragment extends Fragment {
     }
 
     private void updateAdapter(){
-        incidencias = Incidencia.getIncidenciasEnProcesoByUser(getContext());
+        if (isUsuario) {
+            incidencias = Incidencia.getIncidenciasEnProcesoByUser(getContext());
+        } else {
+            incidencias = Incidencia.getIncidenciasEnProcesoByTecnico(getContext());
+        }
         adapter = new IncidenciaEnProcesoAdapter(getContext(),incidencias, Incidencia.ESTATUS_EN_PROCESO);
         recyclerView.setAdapter(adapter);
     }

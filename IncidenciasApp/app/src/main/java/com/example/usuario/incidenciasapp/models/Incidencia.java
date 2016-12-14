@@ -28,7 +28,6 @@ public class Incidencia extends RealmObject {
     private String Categoria;
     private String descripcion;
     private Integer prioridad;
-    private String ubicacion;
     private Integer status;
     private String equipoAfectado;
     private String fechaCreacion;
@@ -60,14 +59,6 @@ public class Incidencia extends RealmObject {
 
     public void setPrioridad(Integer prioridad) {
         this.prioridad = prioridad;
-    }
-
-    public String getUbicacion() {
-        return ubicacion;
-    }
-
-    public void setUbicacion(String ubicacion) {
-        this.ubicacion = ubicacion;
     }
 
     public Integer getStatus() {
@@ -152,23 +143,19 @@ public class Incidencia extends RealmObject {
         this.correoTecnico = correoTecnico;
     }
 
-    public static void newIncidencia(Context context, String descripcion, int prioridad, int status,
-                                     String ubicacion, String equipoAfectado, String fechaCreacion,
-                                     Usuario usuarioLevanta, String titulo, String categoria, int esfuerzo) {
+    public static void newIncidencia(Context context, String descripcion, int status, String equipoAfectado, String fechaCreacion,
+                                     Usuario usuarioLevanta, String categoria, String titulo) {
         Realm.init(context);
         Realm realm = Realm.getDefaultInstance();
         realm.beginTransaction();
         Incidencia incidencia = realm.createObject(Incidencia.class, nextId(context));
         incidencia.setDescripcion(descripcion);
-        incidencia.setPrioridad(prioridad);
         incidencia.setStatus(status);
-        incidencia.setUbicacion(ubicacion);
         incidencia.setEquipoAfectado(equipoAfectado);
         incidencia.setFechaCreacion(fechaCreacion);
         incidencia.setUsuarioLevanta(usuarioLevanta);
-        incidencia.setTitulo(titulo);
         incidencia.setCategoria(categoria);
-        incidencia.setEsfuerzo(esfuerzo);
+        incidencia.setTitulo(titulo);
         incidencia.setCorreoLevanta(usuarioLevanta.getCorreo());
         realm.commitTransaction();
     }
@@ -213,6 +200,15 @@ public class Incidencia extends RealmObject {
         ArrayList<Incidencia> incidenciasDisponibles= new ArrayList<>();
         Realm.init(context);
         Realm realm = Realm.getDefaultInstance();
+        RealmResults<Incidencia> incidenciaRealmResults = realm.where(Incidencia.class).equalTo("status", ESTATUS_EN_PROCESO).equalTo("correoLevanta",UsuarioLogeado.getUsuarioLogeado(context).getUsuario().getCorreo()).findAll();
+        incidenciasDisponibles.addAll(incidenciaRealmResults);
+        return incidenciasDisponibles;
+    }
+
+    public static ArrayList<Incidencia> getIncidenciasEnProcesoByTecnico (Context context) {
+        ArrayList<Incidencia> incidenciasDisponibles= new ArrayList<>();
+        Realm.init(context);
+        Realm realm = Realm.getDefaultInstance();
         RealmResults<Incidencia> incidenciaRealmResults = realm.where(Incidencia.class).equalTo("status", ESTATUS_EN_PROCESO).equalTo("correoTecnico",UsuarioLogeado.getUsuarioLogeado(context).getUsuario().getCorreo()).findAll();
         incidenciasDisponibles.addAll(incidenciaRealmResults);
         return incidenciasDisponibles;
@@ -228,6 +224,15 @@ public class Incidencia extends RealmObject {
     }
 
     public static ArrayList<Incidencia> getIncidenciasTerminadasByUser(Context context) {
+        ArrayList<Incidencia> incidenciasDisponibles= new ArrayList<>();
+        Realm.init(context);
+        Realm realm = Realm.getDefaultInstance();
+        RealmResults<Incidencia> incidenciaRealmResults = realm.where(Incidencia.class).equalTo("status", ESTATUS_TERMINADA).equalTo("correoLevanta",UsuarioLogeado.getUsuarioLogeado(context).getUsuario().getCorreo()).findAll();
+        incidenciasDisponibles.addAll(incidenciaRealmResults);
+        return incidenciasDisponibles;
+    }
+
+    public static ArrayList<Incidencia> getIncidenciasTerminadasByTecnico(Context context) {
         ArrayList<Incidencia> incidenciasDisponibles= new ArrayList<>();
         Realm.init(context);
         Realm realm = Realm.getDefaultInstance();
