@@ -5,35 +5,133 @@
     android:padding="20dp"
     android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/edt_update_usuario"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:singleLine="true"
-        android:hint="Usuario asignado" />
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <TextView
+            android:width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Nombre general: "
+            android:textSize="16sp"
+            android:layout_width="wrap_content" />
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/edt_nombre_equipo"
+            android:textSize="18sp"
+            android:text="El nombre"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="Usuario asignado: "
+            android:textSize="16sp"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/edt_update_usuario"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:singleLine="true"
+            android:textSize="18sp"
+            android:hint="Usuario asignado" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <TextView
+            android:width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:text="Precio: "
+            android:textSize="16sp"
+            android:layout_width="wrap_content" />
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/edt_precio_equipo"
+            android:textSize="18sp"
+            android:text="El Precio"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <TextView
+            android:width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Marca: "
+            android:textSize="16sp"
+            android:layout_width="wrap_content" />
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/edt_marca_equipo"
+            android:textSize="18sp"
+            android:text="La marca"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <TextView
+            android:width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Numero de serie: "
+            android:textSize="16sp"
+            android:layout_width="wrap_content" />
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/edt_serie_equipo"
+            android:textSize="18sp"
+            android:text="El numero de serie"/>
+    </LinearLayout>
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:text="Descripcioneṣ" />
     <EditText
         android:id="@+id/edt_descripcion1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:singleLine="true" />
     <EditText
         android:id="@+id/edt_descripcion2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:singleLine="true" />
     <EditText
         android:id="@+id/edt_descripcion3"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:singleLine="true" />
     <EditText
         android:id="@+id/edt_descripcion4"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:singleLine="true" />
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:singleLine="true"
+        android:layout_marginBottom="15dp"/>
 </LinearLayout>
