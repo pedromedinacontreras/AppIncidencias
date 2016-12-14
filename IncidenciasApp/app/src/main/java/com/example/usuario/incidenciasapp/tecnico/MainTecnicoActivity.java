@@ -43,12 +43,13 @@ public class MainTecnicoActivity extends AppCompatActivity {
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.btn_tecnicos_incidencias:
-                Intent i = new Intent(MainAdministradorActivity.this, IncidenciasAdministradorActivity.class);
+                Intent i = new Intent(MainTecnicoActivity.this, IncidenciasTecnicoActivity.class);
                 startActivity(i);
                 break;
             case R.id.btn_tecnicos_equipos:
-                Intent iListaUsuarios = new Intent(MainAdministradorActivity.this, ListaUsuariosActivity.class);
-                startActivity(iListaUsuarios);
+                Intent iListaEquipo = new Intent(MainTecnicoActivity.this, ListaEquipoActivity.class);
+                iListaEquipo.putExtra("tecnico", true);
+                startActivity(iListaEquipo);
                 break;
             default:
                 break;

@@ -22,7 +22,9 @@
         <activity android:name=".administrador.ListaUsuariosActivity" />
         <activity android:name=".administrador.ListaTecnicosActivity" />
         <activity android:name=".administrador.ListaEquipoActivity" />
-        <activity android:name=".tecnico.MainTecnicoActivity"></activity>
+        <activity android:name=".tecnico.MainTecnicoActivity" />
+        <activity android:name=".tecnico.IncidenciasTecnicoActivity" />
+        <activity android:name=".tecnico.ListaEquipoTecnicoActivity"></activity>
     </application>
 
 </manifest>

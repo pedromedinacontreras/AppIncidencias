@@ -23,10 +23,12 @@ public class EquipoAdapter extends RecyclerView.Adapter<EquipoAdapter.EquipoView
     private ArrayList<Equipo> items;
     private Context context;
     private EquipoInterface equipoInterface;
+    private boolean tecnico;
 
-    public EquipoAdapter(Context context, ArrayList<Equipo> items) {
+    public EquipoAdapter(Context context, ArrayList<Equipo> items, boolean tecnico) {
         this.items = items;
         this.context = context;
+        this.tecnico = tecnico;
     }
 
     @Override
@@ -41,12 +43,16 @@ public class EquipoAdapter extends RecyclerView.Adapter<EquipoAdapter.EquipoView
         holder.tvNombreEquipo.setText(equipo.getNombreGral() + " " + equipo.getNumeroSerie());
         holder.tvMarca.setText(equipo.getMarca());
         holder.tvUsuario.setText(equipo.getUsuario());
-        holder.btnEliminar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                equipoInterface.onEliminar(i, equipo.getNumeroSerie());
-            }
-        });
+        if (tecnico) {
+            holder.btnEliminar.setVisibility(View.INVISIBLE);
+        } else {
+            holder.btnEliminar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    equipoInterface.onEliminar(i, equipo.getNumeroSerie());
+                }
+            });
+        }
         holder.btnEditar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

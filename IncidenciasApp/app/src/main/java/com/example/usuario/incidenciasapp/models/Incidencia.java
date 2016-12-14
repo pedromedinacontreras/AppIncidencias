@@ -35,6 +35,8 @@ public class Incidencia extends RealmObject {
     private Usuario usuarioLevanta;
     private Usuario usuarioTecnico;
     private int esfuerzo;
+    private String correoLevanta;
+    private String correoTecnico;
 
     public Integer getPkIncidencia() {
         return pkIncidencia;
@@ -105,7 +107,9 @@ public class Incidencia extends RealmObject {
     }
 
     public void setUsuarioTecnico(Usuario usuarioTecnico) {
+        //Aquí puede tronar
         this.usuarioTecnico = usuarioTecnico;
+        setCorreoTecnico(usuarioTecnico.getCorreo());
     }
 
     public String getCategoria() {
@@ -132,6 +136,22 @@ public class Incidencia extends RealmObject {
         this.esfuerzo = esfuerzo;
     }
 
+    public String getCorreoLevanta() {
+        return correoLevanta;
+    }
+
+    public void setCorreoLevanta(String correoLevanta) {
+        this.correoLevanta = correoLevanta;
+    }
+
+    public String getCorreoTecnico() {
+        return correoTecnico;
+    }
+
+    public void setCorreoTecnico(String correoTecnico) {
+        this.correoTecnico = correoTecnico;
+    }
+
     public static void newIncidencia(Context context, String descripcion, int prioridad, int status,
                                      String ubicacion, String equipoAfectado, String fechaCreacion,
                                      Usuario usuarioLevanta, String titulo, String categoria, int esfuerzo) {
@@ -149,6 +169,7 @@ public class Incidencia extends RealmObject {
         incidencia.setTitulo(titulo);
         incidencia.setCategoria(categoria);
         incidencia.setEsfuerzo(esfuerzo);
+        incidencia.setCorreoLevanta(usuarioLevanta.getCorreo());
         realm.commitTransaction();
     }
 
@@ -188,11 +209,29 @@ public class Incidencia extends RealmObject {
         return incidenciasDisponibles;
     }
 
+    public static ArrayList<Incidencia> getIncidenciasEnProcesoByUser (Context context) {
+        ArrayList<Incidencia> incidenciasDisponibles= new ArrayList<>();
+        Realm.init(context);
+        Realm realm = Realm.getDefaultInstance();
+        RealmResults<Incidencia> incidenciaRealmResults = realm.where(Incidencia.class).equalTo("status", ESTATUS_EN_PROCESO).equalTo("correoTecnico",UsuarioLogeado.getUsuarioLogeado(context).getUsuario().getCorreo()).findAll();
+        incidenciasDisponibles.addAll(incidenciaRealmResults);
+        return incidenciasDisponibles;
+    }
+
     public static ArrayList<Incidencia> getIncidenciasTerminadas(Context context) {
         ArrayList<Incidencia> incidenciasDisponibles= new ArrayList<>();
         Realm.init(context);
         Realm realm = Realm.getDefaultInstance();
         RealmResults<Incidencia> incidenciaRealmResults = realm.where(Incidencia.class).equalTo("status", ESTATUS_TERMINADA).findAll();
+        incidenciasDisponibles.addAll(incidenciaRealmResults);
+        return incidenciasDisponibles;
+    }
+
+    public static ArrayList<Incidencia> getIncidenciasTerminadasByUser(Context context) {
+        ArrayList<Incidencia> incidenciasDisponibles= new ArrayList<>();
+        Realm.init(context);
+        Realm realm = Realm.getDefaultInstance();
+        RealmResults<Incidencia> incidenciaRealmResults = realm.where(Incidencia.class).equalTo("status", ESTATUS_TERMINADA).equalTo("correoTecnico",UsuarioLogeado.getUsuarioLogeado(context).getUsuario().getCorreo()).findAll();
         incidenciasDisponibles.addAll(incidenciaRealmResults);
         return incidenciasDisponibles;
     }

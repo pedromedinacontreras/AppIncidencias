@@ -11,6 +11,7 @@ import android.widget.Toast;
 import com.example.usuario.incidenciasapp.administrador.MainAdministradorActivity;
 import com.example.usuario.incidenciasapp.models.Usuario;
 import com.example.usuario.incidenciasapp.models.UsuarioLogeado;
+import com.example.usuario.incidenciasapp.tecnico.MainTecnicoActivity;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -38,8 +39,10 @@ public class LoginActivity extends AppCompatActivity {
                   Toast.makeText(LoginActivity.this, "Inicio sesión correcto", Toast.LENGTH_SHORT).show();
                     UsuarioLogeado.setUsuarioLogeado(LoginActivity.this, user);
                     Intent intent = new Intent();
-                    if(user.getTipoUsuario() == Usuario.TIPO_ADMINISTRADOR){
+                    if(UsuarioLogeado.getUsuarioLogeado(LoginActivity.this).getUsuario().getTipoUsuario() == Usuario.TIPO_ADMINISTRADOR){
                         intent = new Intent(LoginActivity.this, MainAdministradorActivity.class);
+                    } else if (UsuarioLogeado.getUsuarioLogeado(LoginActivity.this).getUsuario().getTipoUsuario() == Usuario.TIPO_TECNICO){
+                        intent = new Intent(LoginActivity.this, MainTecnicoActivity.class);
                     }
                     finish();
                     startActivity(intent);

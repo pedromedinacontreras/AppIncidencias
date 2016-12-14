@@ -34,12 +34,14 @@ public class ListaEquipoActivity extends AppCompatActivity implements EquipoAdap
     private Button btnNewEquipo;
     private Toolbar toolbar;
     private Equipo equipo;
+    private boolean tecnico;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_equipo);
 
+        tecnico = getIntent().getBooleanExtra("tecnico",false);
         toolbar = (Toolbar) findViewById(R.id.toolbar_lista_equipos);
         setSupportActionBar(toolbar);
         btnNewEquipo = (Button) findViewById(R.id.btn_nuevo_equipo);
@@ -47,7 +49,7 @@ public class ListaEquipoActivity extends AppCompatActivity implements EquipoAdap
         equipos = Equipo.getAll(this);
         lmanager = new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
         recyclerView.setLayoutManager(lmanager);
-        adapter = new EquipoAdapter(this,equipos);
+        adapter = new EquipoAdapter(this,equipos, tecnico);
         recyclerView.setAdapter(adapter);
         adapter.EquipoInterface(ListaEquipoActivity.this);
         btnNewEquipo.setOnClickListener(new View.OnClickListener() {
@@ -251,7 +253,7 @@ public class ListaEquipoActivity extends AppCompatActivity implements EquipoAdap
 
     private void updateAdapter(){
         equipos = Equipo.getAll(ListaEquipoActivity.this);
-        adapter = new EquipoAdapter(ListaEquipoActivity.this, equipos);
+        adapter = new EquipoAdapter(ListaEquipoActivity.this, equipos, tecnico);
         recyclerView.setAdapter(adapter);
         adapter.EquipoInterface(ListaEquipoActivity.this);
     }
