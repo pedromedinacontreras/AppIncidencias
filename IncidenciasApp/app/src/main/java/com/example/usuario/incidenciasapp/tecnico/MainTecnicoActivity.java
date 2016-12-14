@@ -41,4 +41,19 @@ public class MainTecnicoActivity extends AppCompatActivity {
         });
     }
 
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.btn_tecnicos_incidencias:
+                Intent i = new Intent(MainTecnicoActivity.this, IncidenciasTecnicoActivity.class);
+                startActivity(i);
+                break;
+            case R.id.btn_tecnicos_equipos:
+                Intent iListaEquipo = new Intent(MainTecnicoActivity.this, ListaEquipoActivity.class);
+                iListaEquipo.putExtra("tecnico", true);
+                startActivity(iListaEquipo);
+                break;
+            default:
+                break;
+        }
+    }
 }
