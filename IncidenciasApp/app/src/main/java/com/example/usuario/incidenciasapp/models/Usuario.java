@@ -95,9 +95,6 @@ public class Usuario extends RealmObject {
         Realm realm = Realm.getDefaultInstance();
         RealmResults<Usuario> usuarioRealmResults = realm.where(Usuario.class).findAll();
         usuarioArrayList.addAll(usuarioRealmResults);
-    //    for(Usuario user : usuarioRealmResults){
-  //          usuarioArrayList.add(user);
-//        }
         return usuarioArrayList;
     }
 

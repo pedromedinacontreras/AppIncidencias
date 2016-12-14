@@ -15,10 +15,12 @@ import com.example.usuario.incidenciasapp.fragments.IncidenciasTerminadasTecnico
 public class IncidenciasTecnicoAdapter extends FragmentPagerAdapter {
     private Context context;
     public static int totalPages = 2;
+    private boolean isUsuario;
 
-    public IncidenciasTecnicoAdapter(Context context, FragmentManager fm){
+    public IncidenciasTecnicoAdapter(Context context, FragmentManager fm, boolean isUsuario){
         super(fm);
         this.context = context;
+        this.isUsuario = isUsuario;
     }
 
     @Override
@@ -26,10 +28,10 @@ public class IncidenciasTecnicoAdapter extends FragmentPagerAdapter {
         Fragment f = new Fragment();
         switch (position){
             case 0:
-                f = new IncidenciasEnProcesoTecnicoFragment();
+                f = IncidenciasEnProcesoTecnicoFragment.create(isUsuario);
                 break;
             case 1:
-                f = new IncidenciasTerminadasTecnicoFragment();
+                f = IncidenciasTerminadasTecnicoFragment.create(isUsuario);
                 break;
         }
         return f;

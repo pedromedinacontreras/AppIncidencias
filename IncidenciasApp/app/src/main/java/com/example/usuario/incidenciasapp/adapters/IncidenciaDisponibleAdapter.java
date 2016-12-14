@@ -53,8 +53,8 @@ public class IncidenciaDisponibleAdapter  extends RecyclerView.Adapter<Incidenci
         holder.tvUsuarioLevanta.setText(incidencia.getUsuarioLevanta().getCorreo());
         holder.tvTecnicoAsignado.setText("Técnico por asignar");
         holder.tvEquipoAfectado.setText(incidencia.getEquipoAfectado());
-        holder.tvEsfuerzo.setText(incidencia.getEsfuerzo()+"");
-        holder.tvPrioridad.setText(incidencia.getPrioridad()+"");
+        holder.tvEsfuerzo.setText("Por asignar");
+        holder.tvPrioridad.setText("Por asignar");
     }
 
     @Override

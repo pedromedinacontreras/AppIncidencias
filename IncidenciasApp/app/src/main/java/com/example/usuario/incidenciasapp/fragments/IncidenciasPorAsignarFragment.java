@@ -4,6 +4,7 @@ package com.example.usuario.incidenciasapp.fragments;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.annotation.IntegerRes;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,7 +13,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.usuario.incidenciasapp.adapters.IncidenciaDisponibleAdapter;
 import com.example.usuario.incidenciasapp.adapters.UsuarioDialogAdapter;
@@ -53,7 +56,7 @@ public class IncidenciasPorAsignarFragment extends Fragment {
         recyclerView.addOnItemTouchListener(
                 new RecyclerItemClickListener(getActivity(), new RecyclerItemClickListener.OnItemClickListener() {
                     @Override
-                    public void onItemClick(View view, int position) {
+                    public void onItemClick(final View view, int position) {
                         posicionRecycler = position;
                         dialog = createDetalleIncidenciaDialog(position);
                         dialog.show();
@@ -65,6 +68,8 @@ public class IncidenciasPorAsignarFragment extends Fragment {
                                 dialogTecnicos = createListaTecnicosDialog();
                                 dialogTecnicos.show();
                                 recyclerViewTecnicos = (RecyclerView) dialogTecnicos.findViewById(R.id.recycler_tecnicos_dialog);
+                                final EditText edtPrioridad = (EditText) dialogTecnicos.findViewById(R.id.edt_prioridad);
+                                final EditText edtEsfuerzo = (EditText) dialogTecnicos.findViewById(R.id.edt_esfuerzo);
                                 final UsuarioDialogAdapter adapterTecnios = new UsuarioDialogAdapter(getContext());
                                 lmanagerTecnicos = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
                                 recyclerViewTecnicos.setLayoutManager(lmanagerTecnicos);
@@ -72,20 +77,26 @@ public class IncidenciasPorAsignarFragment extends Fragment {
                                 recyclerViewTecnicos.addOnItemTouchListener(new RecyclerItemClickListener(getActivity(), new RecyclerItemClickListener.OnItemClickListener() {
                                     @Override
                                     public void onItemClick(View view, int position) {
-                                       Usuario user = Usuario.getTecnicos(getContext()).get(position);
-                                        Realm.init(getContext());
-                                        Realm realm = Realm.getDefaultInstance();
-                                        realm.beginTransaction();
-                                        incidencia.setUsuarioTecnico(user);
-                                        incidencia.setStatus(Incidencia.ESTATUS_EN_PROCESO);
-                                        realm.commitTransaction();
-                                        Usuario.addEsfuerzo(getContext(), user.getCorreo(), incidencia.getEsfuerzo());
-                                        dialogTecnicos.dismiss();
-                                        updateAdapter();
-                                        IncidenciasAdministradorActivity administradorActivity = (IncidenciasAdministradorActivity) getActivity();
-                                        administradorActivity.updateAdapter();
-                                        adapter.notifyDataSetChanged();
-                                        adapterTecnios.notifyDataSetChanged();
+                                        if(edtEsfuerzo.getText().toString().equals("") || edtPrioridad.getText().toString().equals("")){
+                                            Toast.makeText(getContext(), "Error, información incompleta", Toast.LENGTH_SHORT).show();
+                                        } else {
+                                            Usuario user = Usuario.getTecnicos(getContext()).get(position);
+                                            Realm.init(getContext());
+                                            Realm realm = Realm.getDefaultInstance();
+                                            realm.beginTransaction();
+                                            incidencia.setUsuarioTecnico(user);
+                                            incidencia.setStatus(Incidencia.ESTATUS_EN_PROCESO);
+                                            incidencia.setEsfuerzo(Integer.valueOf(edtEsfuerzo.getText().toString()));
+                                            incidencia.setPrioridad(Integer.valueOf(edtPrioridad.getText().toString()));
+                                            realm.commitTransaction();
+                                            Usuario.addEsfuerzo(getContext(), user.getCorreo(), incidencia.getEsfuerzo());
+                                            dialogTecnicos.dismiss();
+                                            updateAdapter();
+                                            IncidenciasAdministradorActivity administradorActivity = (IncidenciasAdministradorActivity) getActivity();
+                                            administradorActivity.updateAdapter();
+                                            adapter.notifyDataSetChanged();
+                                            adapterTecnios.notifyDataSetChanged();
+                                        }
                                     }
                                 }));
                             }

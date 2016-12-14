@@ -31,11 +31,16 @@ public class IncidenciasTerminadasTecnicoFragment extends Fragment {
     ArrayList<Incidencia> incidencias = new ArrayList<>();
     Incidencia incidencia;
     Dialog dialog;
+    private boolean isUsuario;
 
     public IncidenciasTerminadasTecnicoFragment() {
         // Required empty public constructor
     }
-
+    public static IncidenciasTerminadasTecnicoFragment create(boolean isUsuario) {
+        IncidenciasTerminadasTecnicoFragment f = new IncidenciasTerminadasTecnicoFragment();
+        f.isUsuario = isUsuario;
+        return f;
+    }
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState){
         super.onViewCreated(view, savedInstanceState);
@@ -50,7 +55,11 @@ public class IncidenciasTerminadasTecnicoFragment extends Fragment {
     }
 
     private void asignaValores(){
-        incidencias = Incidencia.getIncidenciasTerminadasByUser(getContext());
+        if(isUsuario) {
+            incidencias = Incidencia.getIncidenciasTerminadasByUser(getContext());
+        } else {
+            incidencias = Incidencia.getIncidenciasTerminadasByTecnico(getContext());
+        }
         recyclerView = (RecyclerView) getView().findViewById(R.id.recycler_incidencias_terminadas);
         lmanager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
         recyclerView.setLayoutManager(lmanager);
@@ -98,3 +107,4 @@ public class IncidenciasTerminadasTecnicoFragment extends Fragment {
         adapter.notifyDataSetChanged();
     }
 }
+
