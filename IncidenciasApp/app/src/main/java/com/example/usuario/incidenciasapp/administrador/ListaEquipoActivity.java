@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.InputType;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -78,6 +80,13 @@ public class ListaEquipoActivity extends AppCompatActivity implements EquipoAdap
         final View view = inflater.inflate(R.layout.dialog_detalle_equipo,null);
         TextView tvDescripciones = (TextView) view.findViewById(R.id.tv_descripciones);
         TextView tvCosto = (TextView) view.findViewById(R.id.tv_costo);
+        TextView tvMarca = (TextView) view.findViewById(R.id.tv_marca_equipo);
+        TextView tvNombre = (TextView) view.findViewById(R.id.tv_nombre_equipo);
+        TextView tvNumeroSerie = (TextView) view.findViewById(R.id.tv_numero_serie);
+
+        tvNumeroSerie.setText(equipo.getNumeroSerie());
+        tvNombre.setText(equipo.getNombreGral());
+        tvMarca.setText(equipo.getMarca());
         tvDescripciones.setText(equipo.getDescripcion());
         tvCosto.setText(equipo.getPrecio());
         builder.setView(view)
@@ -140,6 +149,17 @@ public class ListaEquipoActivity extends AppCompatActivity implements EquipoAdap
         final EditText edtDescripcion2 = (EditText) view.findViewById(R.id.edt_descripcion2);
         final EditText edtDescripcion3 = (EditText) view.findViewById(R.id.edt_descripcion3);
         final EditText edtDescripcion4 = (EditText) view.findViewById(R.id.edt_descripcion4);
+
+        final EditText edtNombreGeneral = (EditText) view.findViewById(R.id.edt_nombre_equipo);
+        final EditText edtMarca = (EditText) view.findViewById(R.id.edt_marca_equipo);
+        final EditText edtPrecio = (EditText) view.findViewById(R.id.edt_precio_equipo);
+        final EditText edtNumeroSerie = (EditText) view.findViewById(R.id.edt_serie_equipo);
+
+        edtDescripcion1.setText(equipo.getDescripcion());
+        edtNumeroSerie.setText(equipo.getNumeroSerie());
+        edtNombreGeneral.setText(equipo.getNombreGral());
+        edtPrecio.setText(equipo.getPrecio());
+        edtMarca.setText(equipo.getMarca());
         edtUsuario.setText(equipo.getUsuario());
         builder.setView(view)
                 .setTitle("Detalle equipo")
@@ -153,7 +173,17 @@ public class ListaEquipoActivity extends AppCompatActivity implements EquipoAdap
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         if(edtUsuario.getText().toString().equals("") || edtDescripcion1.getText().toString().equals("")) {
-                            Toast.makeText(ListaEquipoActivity.this,"No se pudo hacer el update",Toast.LENGTH_SHORT).show();
+
+                            if(edtUsuario.getText().toString().equals(""))
+                            {
+                                Toast.makeText(ListaEquipoActivity.this,"Campo vacio",Toast.LENGTH_SHORT).show();
+                                edtUsuario.setFocusable(true);
+                            }
+                            if(edtDescripcion1.getText().toString().equals(""))
+                            {
+                                Toast.makeText(ListaEquipoActivity.this,"Campo vacio",Toast.LENGTH_SHORT).show();
+                                edtDescripcion1.setFocusable(true);
+                            }
                             dialogInterface.dismiss();
                         } else {
                             String usuario = edtUsuario.getText().toString();
@@ -195,6 +225,7 @@ public class ListaEquipoActivity extends AppCompatActivity implements EquipoAdap
         final EditText edtDescripcion2 = (EditText) view.findViewById(R.id.edt_descripcion2);
         final EditText edtDescripcion3 = (EditText) view.findViewById(R.id.edt_descripcion3);
         final EditText edtDescripcion4 = (EditText) view.findViewById(R.id.edt_descripcion4);
+        edtPrecio.setInputType(InputType.TYPE_CLASS_NUMBER);
         builder.setView(view)
                 .setTitle("Detalle equipo")
                 .setNegativeButton("CANCELAR", new DialogInterface.OnClickListener() {
@@ -210,7 +241,37 @@ public class ListaEquipoActivity extends AppCompatActivity implements EquipoAdap
                                 || edtNombreGral.getText().toString().equals("") || edtMarca.getText().toString().equals("")
                                 || edtPrecio.getText().toString().equals("") || edtNumeroSerie.getText().toString().equals("")) {
 
-                            Toast.makeText(ListaEquipoActivity.this,"No se pudo crear equipo",Toast.LENGTH_SHORT).show();
+                            if(edtUsuario.getText().toString().equals(""))
+                            {
+                                Toast.makeText(ListaEquipoActivity.this,"Campo vacio",Toast.LENGTH_SHORT).show();
+                                edtUsuario.setFocusable(true);
+                            }
+                            if(edtDescripcion1.getText().toString().equals(""))
+                            {
+                                Toast.makeText(ListaEquipoActivity.this,"Campo vacio",Toast.LENGTH_SHORT).show();
+                                edtDescripcion1.setFocusable(true);
+                            }
+                            if(edtNombreGral.getText().toString().equals(""))
+                            {
+                                Toast.makeText(ListaEquipoActivity.this,"Campo vacio",Toast.LENGTH_SHORT).show();
+                                edtNombreGral.setFocusable(true);
+                            }
+                            if(edtMarca.getText().toString().equals(""))
+                            {
+                                Toast.makeText(ListaEquipoActivity.this,"Campo vacio",Toast.LENGTH_SHORT).show();
+                                edtMarca.setFocusable(true);
+                            }
+                            if(edtPrecio.getText().toString().equals(""))
+                            {
+                                Toast.makeText(ListaEquipoActivity.this,"Campo vacio",Toast.LENGTH_SHORT).show();
+                                edtPrecio.setFocusable(true);
+                            }
+                            if(edtNumeroSerie.getText().toString().equals(""))
+                            {
+                                Toast.makeText(ListaEquipoActivity.this,"Campo vacio",Toast.LENGTH_SHORT).show();
+                                edtNumeroSerie.setFocusable(true);
+                            }
+
                             dialogInterface.dismiss();
                         } else {
                             String usuario = edtUsuario.getText().toString();

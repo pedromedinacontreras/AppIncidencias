@@ -77,6 +77,7 @@ public class EquipoAdapter extends RecyclerView.Adapter<EquipoAdapter.EquipoView
         TextView tvNombreEquipo;
         TextView tvMarca;
         TextView tvUsuario;
+        TextView tvPrecio;
         Button btnEditar;
         Button btnEliminar;
         FrameLayout frameLayout;

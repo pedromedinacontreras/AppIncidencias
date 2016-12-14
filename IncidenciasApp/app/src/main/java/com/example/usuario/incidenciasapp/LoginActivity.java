@@ -34,23 +34,37 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 final String correo = edtCorreo.getText().toString();
                 final String contraseña = edtContrasena.getText().toString();
-                boolean inicioSesion = Usuario.inicioSesion(LoginActivity.this, correo, contraseña);
-                Usuario user = Usuario.getUsuarioByEmail(LoginActivity.this, correo);
-                if(inicioSesion) {
-                  Toast.makeText(LoginActivity.this, "Inicio sesión correcto", Toast.LENGTH_SHORT).show();
-                    UsuarioLogeado.setUsuarioLogeado(LoginActivity.this, user);
-                    Intent intent = new Intent();
-                    if(UsuarioLogeado.getUsuarioLogeado(LoginActivity.this).getUsuario().getTipoUsuario() == Usuario.TIPO_ADMINISTRADOR){
-                        intent = new Intent(LoginActivity.this, MainAdministradorActivity.class);
-                    } else if (UsuarioLogeado.getUsuarioLogeado(LoginActivity.this).getUsuario().getTipoUsuario() == Usuario.TIPO_TECNICO){
-                        intent = new Intent(LoginActivity.this, MainTecnicoActivity.class);
-                    } else if (UsuarioLogeado.getUsuarioLogeado(LoginActivity.this).getUsuario().getTipoUsuario() == Usuario.TIPO_EMPLEADO) {
-                        intent = new Intent(LoginActivity.this, MainUsuarioActivity.class);
+                if(correo.isEmpty() || contraseña.isEmpty())
+                {
+                    if(correo.isEmpty())
+                    {
+                        Toast.makeText(LoginActivity.this, "Campo Vacio", Toast.LENGTH_SHORT).show();
+                        edtCorreo.setFocusable(true);
                     }
-                    finish();
-                    startActivity(intent);
-                } else {
-                    Toast.makeText(LoginActivity.this, "Correo y/o contraseña incorrecto(s)", Toast.LENGTH_SHORT).show();
+                    if(contraseña.isEmpty())
+                    {
+                        Toast.makeText(LoginActivity.this, "Campo Vacio", Toast.LENGTH_SHORT).show();
+                        edtContrasena.setFocusable(true);
+                    }
+                }
+                else
+                {
+                    boolean inicioSesion = Usuario.inicioSesion(LoginActivity.this, correo, contraseña);
+                    Usuario user = Usuario.getUsuarioByEmail(LoginActivity.this, correo);
+                    if(inicioSesion) {
+                        Toast.makeText(LoginActivity.this, "Inicio sesión correcto", Toast.LENGTH_SHORT).show();
+                        UsuarioLogeado.setUsuarioLogeado(LoginActivity.this, user);
+                        Intent intent = new Intent();
+                        if(UsuarioLogeado.getUsuarioLogeado(LoginActivity.this).getUsuario().getTipoUsuario() == Usuario.TIPO_ADMINISTRADOR){
+                            intent = new Intent(LoginActivity.this, MainAdministradorActivity.class);
+                        } else if (UsuarioLogeado.getUsuarioLogeado(LoginActivity.this).getUsuario().getTipoUsuario() == Usuario.TIPO_TECNICO){
+                            intent = new Intent(LoginActivity.this, MainTecnicoActivity.class);
+                        }
+                        finish();
+                        startActivity(intent);
+                    } else {
+                        Toast.makeText(LoginActivity.this, "Correo y/o contraseña incorrecto(s)", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });
