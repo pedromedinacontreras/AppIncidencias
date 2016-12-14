@@ -26,6 +26,7 @@
         <activity android:name=".tecnico.IncidenciasTecnicoActivity" />
         <activity android:name=".tecnico.ListaEquipoTecnicoActivity" />
         <activity android:name=".usuario.MainUsuarioActivity" />
+        <activity android:name=".CatalogoActivity"></activity>
     </application>
 
 </manifest>

@@ -9,9 +9,11 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.usuario.incidenciasapp.CatalogoActivity;
 import com.example.usuario.incidenciasapp.LoginActivity;
 import com.example.usuario.incidenciasapp.models.UsuarioLogeado;
 import com.example.usuario.incidenciasapp.R;
+import com.example.usuario.incidenciasapp.tecnico.MainTecnicoActivity;
 
 public class MainAdministradorActivity extends AppCompatActivity {
 
@@ -57,6 +59,10 @@ public class MainAdministradorActivity extends AppCompatActivity {
                 Intent iListaEquipo = new Intent(MainAdministradorActivity.this, ListaEquipoActivity.class);
                 startActivity(iListaEquipo);
                 break;
+            case R.id.btn_catalogo:
+                Intent iCatalogo = new Intent(MainAdministradorActivity.this, CatalogoActivity.class);
+                iCatalogo.putExtra("isAdmin", true);
+                startActivity(iCatalogo);
             default:
                 break;
         }
