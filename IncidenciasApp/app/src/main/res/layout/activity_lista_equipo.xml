@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.usuario.incidenciasapp.Administrador.ListaEquipoActivity">
+    tools:context="com.example.usuario.incidenciasapp.administrador.ListaEquipoActivity">
 
     <android.support.v7.widget.Toolbar
         app:titleTextColor="#FFF"

@@ -1,4 +1,4 @@
-package com.example.usuario.incidenciasapp.Administrador;
+package com.example.usuario.incidenciasapp.administrador;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -10,8 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.usuario.incidenciasapp.LoginActivity;
-import com.example.usuario.incidenciasapp.Models.Incidencia;
-import com.example.usuario.incidenciasapp.Models.UsuarioLogeado;
+import com.example.usuario.incidenciasapp.models.UsuarioLogeado;
 import com.example.usuario.incidenciasapp.R;
 
 public class MainAdministradorActivity extends AppCompatActivity {

@@ -1,4 +1,4 @@
-package com.example.usuario.incidenciasapp.Fragments;
+package com.example.usuario.incidenciasapp.fragments;
 
 
 import android.app.Dialog;
@@ -13,30 +13,26 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.usuario.incidenciasapp.Adapters.IncidenciaAdapter;
-import com.example.usuario.incidenciasapp.Adapters.IncidenciaEnProcesoAdapter;
-import com.example.usuario.incidenciasapp.Models.Incidencia;
-import com.example.usuario.incidenciasapp.Models.Usuario;
+import com.example.usuario.incidenciasapp.adapters.IncidenciaAdapter;
+import com.example.usuario.incidenciasapp.models.Incidencia;
 import com.example.usuario.incidenciasapp.R;
 import com.example.usuario.incidenciasapp.RecyclerItemClickListener;
 
 import java.util.ArrayList;
 
-import io.realm.Realm;
-
 /**
  * A simple {@link Fragment} subclass.
  */
-public class IncidenciasEnProcesoFragment extends Fragment {
+public class IncidenciasTerminadasFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager lmanager;
-    private IncidenciaEnProcesoAdapter adapter;
+    private IncidenciaAdapter adapter;
     ArrayList<Incidencia> incidencias = new ArrayList<>();
     Incidencia incidencia;
     Dialog dialog;
 
-    public IncidenciasEnProcesoFragment() {
+    public IncidenciasTerminadasFragment() {
         // Required empty public constructor
     }
 
@@ -46,19 +42,20 @@ public class IncidenciasEnProcesoFragment extends Fragment {
         asignaValores();
     }
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_incidencias_en_proceso, container, false);
+        return inflater.inflate(R.layout.fragment_incidencias_terminadas, container, false);
     }
 
     private void asignaValores(){
-        incidencias = Incidencia.getIncidenciasEnProceso(getContext());
-        recyclerView = (RecyclerView) getView().findViewById(R.id.recycler_incidencias_en_proceso);
+        incidencias = Incidencia.getIncidenciasTerminadas(getContext());
+        recyclerView = (RecyclerView) getView().findViewById(R.id.recycler_incidencias_terminadas);
         lmanager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
         recyclerView.setLayoutManager(lmanager);
-        adapter = new IncidenciaEnProcesoAdapter(getContext(),incidencias, Incidencia.ESTATUS_EN_PROCESO);
+        adapter = new IncidenciaAdapter(getContext(),incidencias, Incidencia.ESTATUS_TERMINADA);
         recyclerView.setAdapter(adapter);
         recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getActivity(), new RecyclerItemClickListener.OnItemClickListener() {
             @Override
@@ -69,7 +66,7 @@ public class IncidenciasEnProcesoFragment extends Fragment {
         }));
     }
 
-    public Dialog createDetalleIncidenciaDialog(final int position){
+    public Dialog createDetalleIncidenciaDialog(int position){
         final AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         incidencia = incidencias.get(position);
         LayoutInflater inflater = getActivity().getLayoutInflater();
@@ -90,32 +87,15 @@ public class IncidenciasEnProcesoFragment extends Fragment {
         tvTecnico.setText(incidencia.getUsuarioTecnico().getCorreo());
         builder.setView(view)
                 .setTitle("Incidencia")
-                .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                })
-                .setPositiveButton("Finalizar incidencia", new DialogInterface.OnClickListener() {
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        Realm.init(getContext());
-                        Realm realm = Realm.getDefaultInstance();
-                        realm.beginTransaction();
-                        incidencia.setStatus(Incidencia.ESTATUS_TERMINADA);
-                        realm.commitTransaction();
-                        Usuario user = incidencia.getUsuarioTecnico();
-                        Usuario.restarEsfuerzo(getContext(), user.getCorreo(), incidencia.getEsfuerzo());
-                        adapter.deleteAt(position);
-                        adapter.notifyDataSetChanged();
                         dialog.dismiss();
                     }
                 });
         return builder.create();
     }
-
     public void notifyDataChanged(){
         adapter.notifyDataSetChanged();
     }
-
 }

@@ -1,4 +1,4 @@
-package com.example.usuario.incidenciasapp.Administrador;
+package com.example.usuario.incidenciasapp.administrador;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -16,8 +16,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.example.usuario.incidenciasapp.Adapters.UsuarioAdapter;
-import com.example.usuario.incidenciasapp.Models.Usuario;
+import com.example.usuario.incidenciasapp.adapters.UsuarioAdapter;
+import com.example.usuario.incidenciasapp.models.Usuario;
 import com.example.usuario.incidenciasapp.R;
 
 import java.util.ArrayList;
@@ -74,7 +74,6 @@ public class ListaTecnicosActivity extends AppCompatActivity {
         final EditText edtTel = (EditText) view.findViewById(R.id.edt_telefono_usuario_nuevo);
         final EditText edtCorreo = (EditText) view.findViewById(R.id.edt_correo_usuario_nuevo);
         final EditText edtContraseña = (EditText) view.findViewById(R.id.edt_contrasena_usuario_nuevo);
-        EditText edtEquipo = (EditText) view.findViewById(R.id.edt_equipo_usuario_nuevo);
         final Spinner spinnerEspecialidad = (Spinner) view.findViewById(R.id.spinner_especialidad_usuario_nuevo);
         builder.setView(view)
                 .setTitle("Nuevo técnico")
@@ -84,6 +83,7 @@ public class ListaTecnicosActivity extends AppCompatActivity {
                         Usuario.newUsuario(ListaTecnicosActivity.this, edtTel.getText().toString(), edtCorreo.getText().toString(),
                                 edtContraseña.getText().toString(), Usuario.TIPO_TECNICO, spinnerEspecialidad.getSelectedItem().toString(), edtNombre.getText().toString());
                         Toast.makeText(ListaTecnicosActivity.this, "Usuario creado", Toast.LENGTH_SHORT).show();
+                        updateAdapter();
                         adapter.notifyDataSetChanged();
                         dialogInterface.dismiss();
                     }
@@ -95,5 +95,10 @@ public class ListaTecnicosActivity extends AppCompatActivity {
                     }
                 });
         return builder.create();
+    }
+    private void updateAdapter(){
+        usuarios = Usuario.getTecnicos(ListaTecnicosActivity.this);
+        adapter = new UsuarioAdapter(ListaTecnicosActivity.this, usuarios);
+        recyclerView.setAdapter(adapter);
     }
 }

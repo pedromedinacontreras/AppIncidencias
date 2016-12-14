@@ -1,4 +1,4 @@
-package com.example.usuario.incidenciasapp.Models;
+package com.example.usuario.incidenciasapp.models;
 
 import io.realm.RealmObject;
 

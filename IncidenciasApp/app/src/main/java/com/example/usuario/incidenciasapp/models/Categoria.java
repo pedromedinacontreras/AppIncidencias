@@ -1,4 +1,4 @@
-package com.example.usuario.incidenciasapp.Models;
+package com.example.usuario.incidenciasapp.models;
 
 /**
  * Created by usuario on 8/12/16.

@@ -1,14 +1,13 @@
-package com.example.usuario.incidenciasapp.Adapters;
+package com.example.usuario.incidenciasapp.adapters;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.usuario.incidenciasapp.Models.Incidencia;
+import com.example.usuario.incidenciasapp.models.Incidencia;
 import com.example.usuario.incidenciasapp.R;
 
 import java.util.ArrayList;
@@ -52,15 +51,10 @@ public class IncidenciaDisponibleAdapter  extends RecyclerView.Adapter<Incidenci
         holder.tvTituloIncidencia.setText(incidencia.getTitulo());
         holder.tvFecha.setText(incidencia.getFechaCreacion());
         holder.tvUsuarioLevanta.setText(incidencia.getUsuarioLevanta().getCorreo());
+        holder.tvTecnicoAsignado.setText("Técnico por asignar");
         holder.tvEquipoAfectado.setText(incidencia.getEquipoAfectado());
-
-        if(incidencia.getStatus() != Incidencia.ESTATUS_DISPONIBLE){
-            holder.tvTituloIncidencia.setTextColor(Color.parseColor("#D50000"));
-            holder.tvFecha.setTextColor(Color.parseColor("#D50000"));
-            holder.tvUsuarioLevanta.setTextColor(Color.parseColor("#D50000"));
-            holder.tvEquipoAfectado.setTextColor(Color.parseColor("#D50000"));
-            holder.tvTecnicoAsignado.setTextColor(Color.parseColor("#D50000"));
-        }
+        holder.tvEsfuerzo.setText(incidencia.getEsfuerzo()+"");
+        holder.tvPrioridad.setText(incidencia.getPrioridad()+"");
     }
 
     @Override
@@ -75,6 +69,8 @@ public class IncidenciaDisponibleAdapter  extends RecyclerView.Adapter<Incidenci
         TextView tvUsuarioLevanta;
         TextView tvTecnicoAsignado;
         TextView tvFecha;
+        TextView tvEsfuerzo;
+        TextView tvPrioridad;
 
         public IncidenciaViewHolder(View view){
             super(view);
@@ -83,6 +79,8 @@ public class IncidenciaDisponibleAdapter  extends RecyclerView.Adapter<Incidenci
             tvUsuarioLevanta = (TextView) view.findViewById(R.id.tv_usuario_levanta);
             tvTecnicoAsignado = (TextView) view.findViewById(R.id.tv_tecnico_asignado);
             tvFecha = (TextView) view.findViewById(R.id.tv_fecha);
+            tvEsfuerzo = (TextView) view.findViewById(R.id.tv_esfuerzo);
+            tvPrioridad = (TextView) view.findViewById(R.id.tv_prioridad);
         }
     }
 
