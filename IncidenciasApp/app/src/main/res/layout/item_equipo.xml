@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="150dp"
     android:orientation="horizontal">
-
+    <!--   private String numeroSerie;
+    private String marca;
+//    private RealmList<Descripcion> descripciones;
+    private String descripciones;
+    private String precio;
+    private String correoUsuario;
+    private String nombreGral;-->
     <FrameLayout
         android:id="@+id/item_click"
         android:layout_width="match_parent"
@@ -14,62 +21,122 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        >
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="3"
             android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/tv_nombre_equipo"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="0sp"
                 android:layout_weight="1"
-                android:text="M onitor #3dscg453 "
-                android:textSize="18sp" />
+                android:padding="10sp">
+                <ImageView
+                    android:layout_width="0sp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:src="@drawable/equipo"/>
 
-            <TextView
-                android:id="@+id/tv_marca_equipo"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:text="LG"
-                android:textSize="18sp" />
+                <TextView
+                    android:id="@+id/tv_nombre_equipo"
+                    android:layout_width="0sp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="7"
+                    android:layout_marginTop="5sp"
+                    android:text="M onitor #3dscg453 "
+                    android:textSize="18sp"
+                    android:textColor="@color/blackColor"
+                    tools:textStyle="bold" />
+            </LinearLayout>
 
-            <TextView
-                android:id="@+id/tv_email_equipo"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="0sp"
                 android:layout_weight="1"
-                android:text="ejemplo@equipo.com"
-                android:textSize="18sp" />
+                android:padding="10sp">
+                <ImageView
+                    android:layout_width="0sp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:src="@drawable/brand"/>
+                <TextView
+                    android:id="@+id/tv_marca_equipo"
+                    android:layout_width="0sp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="7"
+                    android:text="LG"
+                    android:textColor="@color/blackColor"
+                    android:textSize="18sp"
+                    tools:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0sp"
+                android:layout_weight="1"
+                android:padding="10sp">
+                <ImageView
+                    android:layout_width="0sp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:src="@drawable/mail"/>
+                <TextView
+                    android:id="@+id/tv_email_equipo"
+                    android:layout_width="0sp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="7"
+                    android:text="ejemplo@equipo.com"
+                    android:textColor="@color/blackColor"
+                    android:textSize="18sp"
+                    tools:textStyle="bold" />
+            </LinearLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:background="@color/colorPrimary">
+
+            </FrameLayout>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="0dp"
+            android:layout_marginBottom="10sp"
             android:layout_height="match_parent"
-            android:layout_weight="1.5"
+            android:layout_weight="1"
             android:gravity="bottom"
             android:orientation="vertical"
-            android:weightSum="3">
+            android:weightSum="2">
 
             <Button
                 android:id="@+id/btn_editar_equipo"
+                android:background="@color/colorPrimaryDark"
+                android:textColor="@color/whiteColor"
+                android:layout_margin="10sp"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
+                android:textStyle="bold"
+                android:textSize="18dp"
                 android:text="Editar" />
 
             <Button
                 android:id="@+id/btn_eliminar_equipo"
                 android:layout_width="match_parent"
+                android:layout_margin="10sp"
+                android:background="@color/colorPrimaryDark"
+                android:textColor="@color/whiteColor"
+                android:textStyle="bold"
+                android:textSize="18dp"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:text="Eliminar" />
 
         </LinearLayout>
+
     </LinearLayout>
 
 </RelativeLayout>
