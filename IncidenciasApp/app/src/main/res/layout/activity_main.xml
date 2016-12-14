@@ -10,11 +10,14 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context="com.example.usuario.incidenciasapp.MainActivity">
+    android:background="#ffffff"
+    tools:context="com.example.usuario.incidenciasapp.MainActivity"
+    android:weightSum="1">
 
     <ImageView
-        android:layout_width="wrap_content"
+        android:layout_width="365dp"
         android:layout_height="wrap_content"
-        android:src="@drawable/logo"/>
+        android:src="@drawable/roket"
+        android:layout_weight="0.45" />
 
 </LinearLayout>
