@@ -25,17 +25,6 @@ public class IncidenciaDisponibleAdapter  extends RecyclerView.Adapter<Incidenci
     public IncidenciaDisponibleAdapter(Context context, ArrayList<Incidencia> items, int status) {
         this.items = items;
         this.context = context;
-//        switch (status) {
-//            case Incidencia.ESTATUS_DISPONIBLE:
-//                this.items = Incidencia.getIncidenciasDisponibles(context);
-//                break;
-//            case Incidencia.ESTATUS_EN_PROCESO:
-//                this.items = Incidencia.getIncidenciasEnProceso(context);
-//                break;
-//            case Incidencia.ESTATUS_TERMINADA:
-//                this.items = Incidencia.getIncidenciasTerminadas(context);
-//                break;
-//        }
     }
 
     @Override
@@ -53,8 +42,8 @@ public class IncidenciaDisponibleAdapter  extends RecyclerView.Adapter<Incidenci
         holder.tvUsuarioLevanta.setText(incidencia.getUsuarioLevanta().getCorreo());
         holder.tvTecnicoAsignado.setText("Técnico por asignar");
         holder.tvEquipoAfectado.setText(incidencia.getEquipoAfectado());
-        holder.tvEsfuerzo.setText("Por asignar");
-        holder.tvPrioridad.setText("Por asignar");
+        holder.tvEsfuerzo.setText(" ");
+        holder.tvPrioridad.setText(" ");
     }
 
     @Override

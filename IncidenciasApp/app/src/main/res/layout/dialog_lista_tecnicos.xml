@@ -7,13 +7,11 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_tecnicos_dialog"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="5">
+        android:layout_height="wrap_content">
     </android.support.v7.widget.RecyclerView>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_height="wrap_content">
         <ImageView
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -23,17 +21,19 @@
         <EditText
             android:id="@+id/edt_esfuerzo"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="5"
             android:layout_marginLeft="30dp"
             android:textSize="25sp"
+            android:singleLine="true"
+            android:maxLength="1"
+            android:inputType="number"
             android:textStyle="bold"
             android:hint="Esfuerzo"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_height="wrap_content">
         <ImageView
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -46,7 +46,10 @@
             android:textSize="25sp"
             android:textStyle="bold"
             android:layout_marginLeft="30dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:inputType="number"
+            android:maxLength="1"
             android:layout_weight="5"
             android:hint="Prioridad"/>
     </LinearLayout>
