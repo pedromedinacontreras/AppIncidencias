@@ -73,11 +73,21 @@ public class ListaEquipoActivity extends AppCompatActivity implements EquipoAdap
         final View view = inflater.inflate(R.layout.dialog_detalle_equipo,null);
         TextView tvDescripciones = (TextView) view.findViewById(R.id.tv_descripciones);
         TextView tvCosto = (TextView) view.findViewById(R.id.tv_costo);
+        TextView tvCorreoUsuario = (TextView) view.findViewById(R.id.tv_correoUsuario);
+        TextView tvNombre = (TextView) view.findViewById(R.id.tv_nombre_equipo);
+        TextView tvMarca = (TextView) view.findViewById(R.id.tv_marca);
+        TextView tvNumSerio = (TextView) view.findViewById(R.id.tv_numero_serie);
+
+
+        tvNumSerio.setText(equipo.getNumeroSerie());
         tvDescripciones.setText(equipo.getDescripcion());
         tvCosto.setText(equipo.getPrecio());
+        tvCorreoUsuario.setText(equipo.getUsuario());
+        tvMarca.setText(equipo.getMarca());
+        tvNombre.setText(equipo.getNombreGral());
         builder.setView(view)
                 .setTitle("Detalle equipo")
-                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                .setPositiveButton("Listo", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         dialogInterface.dismiss();

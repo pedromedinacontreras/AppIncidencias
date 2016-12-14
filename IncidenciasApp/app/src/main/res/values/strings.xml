@@ -12,5 +12,6 @@
     </string-array>
 
     <string name="prompt_redes">REDES</string>
+    <string name="caracteristicas"><u>Características del Equipo</u></string>
     <string name="title_activity_main2">Main2Activity</string>
 </resources>
