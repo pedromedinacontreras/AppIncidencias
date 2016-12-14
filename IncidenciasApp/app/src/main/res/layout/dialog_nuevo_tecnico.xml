@@ -2,9 +2,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    android:layout_width="400dp"
+    android:layout_width="500dp"
     android:layout_height="700dp"
     android:padding="20dp"
+    android:layout_marginLeft="50dp"
     android:gravity="center">
 
     <LinearLayout
@@ -12,70 +13,118 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="Nombre"
+                android:layout_weight="1"
+                android:textSize="22sp"/>
+            <EditText
+                android:id="@+id/edt_nombre_usuario_nuevo"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_marginLeft="50dp"
+                android:layout_height="match_parent"
+                android:textSize="20sp"/>
+        </LinearLayout>
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Nombre"
-            android:textSize="22sp"/>
-        <EditText
-            android:id="@+id/edt_nombre_usuario_nuevo"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Teléfono"
+                android:textSize="22sp"/>
+            <EditText
+                android:id="@+id/edt_telefono_usuario_nuevo"
+                android:layout_width="0dp"
+                android:layout_marginLeft="50dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:textSize="20sp"/>
+        </LinearLayout>
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Teléfono"
-            android:textSize="22sp"/>
-        <EditText
-            android:id="@+id/edt_telefono_usuario_nuevo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+            <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
             android:text="Correo"
             android:textSize="22sp"/>
-        <EditText
-            android:id="@+id/edt_correo_usuario_nuevo"
+            <EditText
+                android:id="@+id/edt_correo_usuario_nuevo"
+                android:layout_width="0dp"
+                android:layout_marginLeft="50dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textSize="20sp"/>
+        </LinearLayout>
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"/>
-        <TextView
+            android:layout_height="0dp"
+            android:layout_weight="1">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Contraseña"
+                android:textSize="22sp"/>
+            <EditText
+                android:id="@+id/edt_contrasena_usuario_nuevo"
+                android:layout_width="0dp"
+                android:layout_marginLeft="50dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textSize="20sp"/>
+        </LinearLayout>
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Contraseña"
-            android:textSize="22sp"/>
-        <EditText
-            android:id="@+id/edt_contrasena_usuario_nuevo"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:text="Equipo"
+                android:textSize="22sp"/>
+            <EditText
+                android:id="@+id/edt_equipo_usuario_nuevo"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_marginLeft="50dp"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"/>
+        </LinearLayout>
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Equipo"
-            android:textSize="22sp"/>
-        <EditText
-            android:id="@+id/edt_equipo_usuario_nuevo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"/>
-        <TextView
-            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+            <TextView
+            android:layout_width="0dp"
+                android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text="Especialidad"
             android:textSize="22sp"/>
-        <Spinner
-            android:id="@+id/spinner_especialidad_usuario_nuevo"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:entries="@array/especialidades"
-            android:prompt="@string/prompt_redes">
+            <Spinner
+                android:id="@+id/spinner_especialidad_usuario_nuevo"
+                android:layout_width="0sp"
+                android:layout_weight="1"
+                android:layout_marginLeft="50dp"
+                android:layout_height="match_parent"
+                android:entries="@array/especialidades"
+                android:prompt="@string/prompt_redes">
 
-        </Spinner>
+            </Spinner>
+        </LinearLayout>
     </LinearLayout>
     <LinearLayout
         android:visibility="gone"
