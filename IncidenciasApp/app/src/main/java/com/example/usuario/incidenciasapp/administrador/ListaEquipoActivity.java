@@ -45,7 +45,7 @@ public class ListaEquipoActivity extends AppCompatActivity implements EquipoAdap
         tecnico = getIntent().getBooleanExtra("tecnico",false);
         toolbar = (Toolbar) findViewById(R.id.toolbar_lista_equipos);
         setSupportActionBar(toolbar);
-        btnNewEquipo = (Button) findViewById(R.id.btn_nuevo_equipo);
+        btnNewEquipo = (Button) findViewById(R.id.btn_nuevo_catalogo);
         recyclerView = (RecyclerView) findViewById(R.id.recycler_lista_equipo);
         equipos = Equipo.getAll(this);
         lmanager = new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);

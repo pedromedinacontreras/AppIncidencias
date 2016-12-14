@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <EditText
+        android:id="@+id/edt_titulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Título"
+        android:singleLine="true" />
+
+    <EditText
+        android:id="@+id/edt_prioridad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Prioridad"
+        android:inputType="number"
+        android:singleLine="true" />
+
+    <EditText
+        android:id="@+id/edt_tiempo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Tiempo (horas)"
+        android:inputType="number"
+        android:singleLine="true" />
+
+    <Spinner
+        android:id="@+id/spinner_categoria"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:entries="@array/especialidades"
+        android:prompt="@string/prompt_redes"/>
+
+        <EditText
+            android:id="@+id/edt_descripcion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Descripción"
+            android:lines="2"
+            android:singleLine="true" />
+
+        <EditText
+            android:id="@+id/edt_solucion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Posible solución"
+            android:lines="2"
+            android:singleLine="true" />
+
+</LinearLayout>
