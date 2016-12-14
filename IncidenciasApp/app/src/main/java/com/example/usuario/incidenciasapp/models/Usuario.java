@@ -1,13 +1,11 @@
-package com.example.usuario.incidenciasapp.Models;
+package com.example.usuario.incidenciasapp.models;
 
 import java.util.ArrayList;
 
 import io.realm.Realm;
-import io.realm.RealmConfiguration;
 import io.realm.RealmObject;
 import io.realm.RealmResults;
 import io.realm.annotations.PrimaryKey;
-import io.realm.internal.Context;
 
 /**
  * Created by usuario on 30/11/16.

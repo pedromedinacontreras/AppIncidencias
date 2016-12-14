@@ -1,4 +1,4 @@
-package com.example.usuario.incidenciasapp.Administrador;
+package com.example.usuario.incidenciasapp.administrador;
 
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
-import com.example.usuario.incidenciasapp.Adapters.IncidenciasPagerAdapter;
+import com.example.usuario.incidenciasapp.adapters.IncidenciasPagerAdapter;
 import com.example.usuario.incidenciasapp.R;
 
 public class IncidenciasAdministradorActivity extends AppCompatActivity {
@@ -53,5 +53,10 @@ public class IncidenciasAdministradorActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    public void updateAdapter(){
+        final IncidenciasPagerAdapter adapter = new IncidenciasPagerAdapter(this, getSupportFragmentManager());
+        viewPager.setAdapter(adapter);
     }
 }

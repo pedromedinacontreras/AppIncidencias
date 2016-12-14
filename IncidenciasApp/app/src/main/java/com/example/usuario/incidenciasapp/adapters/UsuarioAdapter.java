@@ -1,4 +1,4 @@
-package com.example.usuario.incidenciasapp.Adapters;
+package com.example.usuario.incidenciasapp.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -6,7 +6,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import com.example.usuario.incidenciasapp.Models.Usuario;
+
+import com.example.usuario.incidenciasapp.models.Equipo;
+import com.example.usuario.incidenciasapp.models.Usuario;
 import com.example.usuario.incidenciasapp.R;
 
 import java.util.ArrayList;
@@ -37,7 +39,13 @@ public class UsuarioAdapter extends RecyclerView.Adapter<UsuarioAdapter.UsuarioV
         holder.tvCorreo.setText(usuario.getCorreo());
         holder.tvEspecialidad.setText(usuario.getEspecialidad());
         holder.tvNombreUsuario.setText(usuario.getNombre());
-        holder.tvEquipo.setText(usuario.getPkUsuario());
+        try {
+            Equipo equipoUsuario = Equipo.getEquiposByUser(context,usuario.getCorreo()).get(0);
+            holder.tvEquipo.setText(equipoUsuario.getNombreGral() + " " + equipoUsuario.getMarca() + " " + equipoUsuario.getNumeroSerie());
+        } catch (Exception e) {
+            holder.tvEquipo.setText("Usuario sin equipo asignado");
+
+        }
         holder.tvEsfuerzo.setText(String.valueOf(usuario.getEsfuerzo()));
         switch (usuario.getTipoUsuario()) {
             case Usuario.TIPO_ADMINISTRADOR:

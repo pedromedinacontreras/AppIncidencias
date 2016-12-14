@@ -6,10 +6,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.example.usuario.incidenciasapp.Models.Usuario;
-
-import io.realm.Realm;
-
 public class SignUpActivity extends AppCompatActivity {
 
     private EditText edtNombre;

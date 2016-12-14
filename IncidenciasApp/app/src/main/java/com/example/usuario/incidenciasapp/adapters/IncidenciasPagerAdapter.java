@@ -1,13 +1,13 @@
-package com.example.usuario.incidenciasapp.Adapters;
+package com.example.usuario.incidenciasapp.adapters;
 
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.example.usuario.incidenciasapp.Fragments.IncidenciasEnProcesoFragment;
-import com.example.usuario.incidenciasapp.Fragments.IncidenciasPorAsignarFragment;
-import com.example.usuario.incidenciasapp.Fragments.IncidenciasTerminadasFragment;
+import com.example.usuario.incidenciasapp.fragments.IncidenciasEnProcesoFragment;
+import com.example.usuario.incidenciasapp.fragments.IncidenciasPorAsignarFragment;
+import com.example.usuario.incidenciasapp.fragments.IncidenciasTerminadasFragment;
 
 /**
  * Created by usuario on 6/12/16.

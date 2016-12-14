@@ -1,15 +1,10 @@
-package com.example.usuario.incidenciasapp.Models;
+package com.example.usuario.incidenciasapp.models;
 
 import android.util.Log;
 
-import java.util.ArrayList;
-
 import io.realm.Realm;
-import io.realm.RealmList;
 import io.realm.RealmObject;
-import io.realm.RealmResults;
 import io.realm.annotations.PrimaryKey;
-import io.realm.internal.Context;
 
 /**
  * Created by usuario on 30/11/16.

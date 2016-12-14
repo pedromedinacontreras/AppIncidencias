@@ -1,4 +1,4 @@
-package com.example.usuario.incidenciasapp.Administrador;
+package com.example.usuario.incidenciasapp.administrador;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -13,13 +13,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RatingBar;
 import android.widget.Toast;
 
-import com.example.usuario.incidenciasapp.Adapters.IncidenciaAdapter;
-import com.example.usuario.incidenciasapp.Adapters.UsuarioAdapter;
-import com.example.usuario.incidenciasapp.Models.Incidencia;
-import com.example.usuario.incidenciasapp.Models.Usuario;
+import com.example.usuario.incidenciasapp.adapters.UsuarioAdapter;
+import com.example.usuario.incidenciasapp.models.Usuario;
 import com.example.usuario.incidenciasapp.R;
 
 import java.util.ArrayList;
@@ -76,9 +73,6 @@ public class ListaUsuariosActivity extends AppCompatActivity {
         final EditText edtTel = (EditText) view.findViewById(R.id.edt_telefono_usuario_nuevo);
         final EditText edtCorreo = (EditText) view.findViewById(R.id.edt_correo_usuario_nuevo);
         final EditText edtContraseña = (EditText) view.findViewById(R.id.edt_contrasena_usuario_nuevo);
-        EditText edtEquipo = (EditText) view.findViewById(R.id.edt_equipo_usuario_nuevo);
-//        textComentario = (EditText) view.findViewById(R.id.comentario_valorado);
-//        ratingBarComentario = (RatingBar) view.findViewById(R.id.rating_producto);
         builder.setView(view)
                 .setTitle("Nuevo usuario")
                 .setPositiveButton("GUARDAR", new DialogInterface.OnClickListener() {
@@ -87,6 +81,7 @@ public class ListaUsuariosActivity extends AppCompatActivity {
                         Usuario.newUsuario(ListaUsuariosActivity.this, edtTel.getText().toString(), edtCorreo.getText().toString(),
                                 edtContraseña.getText().toString(), Usuario.TIPO_EMPLEADO, Usuario.SIN_ESPECIALIDAD, edtNombre.getText().toString());
                         Toast.makeText(ListaUsuariosActivity.this, "Usuario creado", Toast.LENGTH_SHORT).show();
+                        updateAdapter();
                         adapter.notifyDataSetChanged();
                         dialogInterface.dismiss();
                     }
@@ -98,5 +93,11 @@ public class ListaUsuariosActivity extends AppCompatActivity {
                     }
                 });
         return builder.create();
+    }
+
+    private void updateAdapter(){
+        usuarios = Usuario.getEmpleados(ListaUsuariosActivity.this);
+        adapter = new UsuarioAdapter(ListaUsuariosActivity.this, usuarios);
+        recyclerView.setAdapter(adapter);
     }
 }
