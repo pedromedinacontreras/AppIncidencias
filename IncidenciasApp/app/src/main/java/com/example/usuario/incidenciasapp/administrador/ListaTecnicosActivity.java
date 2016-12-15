@@ -43,7 +43,7 @@ public class ListaTecnicosActivity extends AppCompatActivity {
         usuarios = Usuario.getTecnicos(this);
         lmanager = new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
         recyclerView.setLayoutManager(lmanager);
-        adapter = new UsuarioAdapter(this,usuarios);
+        adapter = new UsuarioAdapter(this,usuarios, false);
         recyclerView.setAdapter(adapter);
         btnNewUser.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,7 +98,7 @@ public class ListaTecnicosActivity extends AppCompatActivity {
     }
     private void updateAdapter(){
         usuarios = Usuario.getTecnicos(ListaTecnicosActivity.this);
-        adapter = new UsuarioAdapter(ListaTecnicosActivity.this, usuarios);
+        adapter = new UsuarioAdapter(ListaTecnicosActivity.this, usuarios, false);
         recyclerView.setAdapter(adapter);
     }
 }

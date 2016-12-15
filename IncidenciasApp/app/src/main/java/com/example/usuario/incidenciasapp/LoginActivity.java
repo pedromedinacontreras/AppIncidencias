@@ -59,6 +59,8 @@ public class LoginActivity extends AppCompatActivity {
                             intent = new Intent(LoginActivity.this, MainAdministradorActivity.class);
                         } else if (UsuarioLogeado.getUsuarioLogeado(LoginActivity.this).getUsuario().getTipoUsuario() == Usuario.TIPO_TECNICO){
                             intent = new Intent(LoginActivity.this, MainTecnicoActivity.class);
+                        } else if(UsuarioLogeado.getUsuarioLogeado(LoginActivity.this).getUsuario().getTipoUsuario() == Usuario.TIPO_EMPLEADO) {
+                            intent = new Intent(LoginActivity.this, MainUsuarioActivity.class);
                         }
                         finish();
                         startActivity(intent);

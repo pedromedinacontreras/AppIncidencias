@@ -53,6 +53,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
+                android:textColor="@color/blackColor"
+                android:textStyle="bold"
                 android:text="Inicio usuario"
                 android:gravity="center_horizontal"
                 android:textSize="40sp"/>
@@ -61,17 +63,17 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="3"
+            android:gravity="bottom"
             android:orientation="vertical">
             <Button
                 android:id="@+id/btn_usuario_incidencias_en_proceso"
                 android:onClick="onClick"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_height="200dp"
                 android:text="INCIDENCIAS"
                 android:textSize="40sp"
-                android:textStyle="bold|italic"
-                android:background="#64B5F6"
+                android:textStyle="bold"
+                android:background="#C62828"
                 />
         </LinearLayout>
 

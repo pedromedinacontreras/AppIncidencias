@@ -43,7 +43,7 @@ public class ListaUsuariosActivity extends AppCompatActivity {
         usuarios = Usuario.getEmpleados(this);
         lmanager = new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
         recyclerView.setLayoutManager(lmanager);
-        adapter = new UsuarioAdapter(this,usuarios);
+        adapter = new UsuarioAdapter(this, usuarios, true);
         recyclerView.setAdapter(adapter);
         btnNewUser.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,7 +97,7 @@ public class ListaUsuariosActivity extends AppCompatActivity {
 
     private void updateAdapter(){
         usuarios = Usuario.getEmpleados(ListaUsuariosActivity.this);
-        adapter = new UsuarioAdapter(ListaUsuariosActivity.this, usuarios);
+        adapter = new UsuarioAdapter(ListaUsuariosActivity.this, usuarios, true);
         recyclerView.setAdapter(adapter);
     }
 }

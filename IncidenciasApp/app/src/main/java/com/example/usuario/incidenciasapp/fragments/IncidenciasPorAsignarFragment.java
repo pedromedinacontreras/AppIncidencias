@@ -140,13 +140,7 @@ public class IncidenciasPorAsignarFragment extends Fragment {
         tvUsuarioLevanta.setText(incidencia.getUsuarioLevanta().getCorreo());
         tvEquipo.setText(incidencia.getEquipoAfectado());
         builder.setView(view)
-                .setTitle("Incidencia")
-                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialog.dismiss();
-                    }
-                });
+                .setTitle("Incidencia");
         return builder.create();
     }
 
@@ -156,10 +150,10 @@ public class IncidenciasPorAsignarFragment extends Fragment {
         final View view = inflater.inflate(R.layout.dialog_lista_tecnicos,null);
         builder.setView(view)
                 .setTitle("Técnicos")
-                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogTecnicos.dismiss();
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
                     }
                 });
         return builder.create();

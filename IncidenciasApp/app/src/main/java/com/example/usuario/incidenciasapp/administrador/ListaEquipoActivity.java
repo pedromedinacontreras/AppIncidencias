@@ -83,14 +83,22 @@ public class ListaEquipoActivity extends AppCompatActivity implements EquipoAdap
         TextView tvMarca = (TextView) view.findViewById(R.id.tv_marca_equipo);
         TextView tvNombre = (TextView) view.findViewById(R.id.tv_nombre_equipo);
         TextView tvNumeroSerie = (TextView) view.findViewById(R.id.tv_numero_serie);
+        TextView tvCorreo = (TextView) view.findViewById(R.id.tv_correoUsuario);
 
         tvNumeroSerie.setText(equipo.getNumeroSerie());
         tvNombre.setText(equipo.getNombreGral());
         tvMarca.setText(equipo.getMarca());
         tvDescripciones.setText(equipo.getDescripcion());
         tvCosto.setText(equipo.getPrecio());
+        tvCorreo.setText(equipo.getUsuario());
         builder.setView(view)
                 .setTitle("Detalle equipo")
+                .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                })
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
