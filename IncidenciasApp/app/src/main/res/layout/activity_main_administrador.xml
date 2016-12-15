@@ -42,6 +42,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="3"
+            android:layout_marginBottom="0dp"
             android:orientation="vertical"
             android:gravity="center">
             <ImageView
@@ -53,7 +54,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
+                android:textColor="@color/blackColor"
                 android:text="Inicio administrador"
+                android:textStyle="bold"
                 android:gravity="center_horizontal"
                 android:textSize="40sp"/>
         </LinearLayout>
@@ -69,9 +72,9 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:text="INCIDENCIAS"
-                android:textSize="40sp"
-                android:textStyle="bold|italic"
-                android:background="#64B5F6"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:background="#EF5350"
                 />
             <Button
                 android:id="@+id/btn_admin_usuarios"
@@ -80,9 +83,9 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:text="USUARIOS"
-                android:textSize="40sp"
-                android:background="#42A5F5"
-                android:textStyle="bold|italic"/>
+                android:textSize="30sp"
+                android:background="#F44336"
+                android:textStyle="bold"/>
             <Button
                 android:id="@+id/btn_admin_tecnicos"
                 android:onClick="onClick"
@@ -90,9 +93,9 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:text="TÉCNICOS"
-                android:textSize="40sp"
-                android:background="#2196F3"
-                android:textStyle="bold|italic"/>
+                android:textSize="30sp"
+                android:background="#E53935"
+                android:textStyle="bold"/>
             <Button
                 android:id="@+id/btn_admin_equipos"
                 android:onClick="onClick"
@@ -100,9 +103,9 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:text="EQUIPOS"
-                android:textSize="40sp"
-                android:background="#1E88E5"
-                android:textStyle="bold|italic"/>
+                android:textSize="30sp"
+                android:background="#D32F2F"
+                android:textStyle="bold"/>
             <Button
                 android:id="@+id/btn_catalogo"
                 android:onClick="onClick"
@@ -110,9 +113,9 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:text="CATÁLOGO"
-                android:textSize="40sp"
-                android:background="#1E08E5"
-                android:textStyle="bold|italic"/>
+                android:textSize="30sp"
+                android:background="#C62828"
+                android:textStyle="bold"/>
         </LinearLayout>
 
     </LinearLayout>

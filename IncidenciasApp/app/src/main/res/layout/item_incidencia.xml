@@ -4,23 +4,22 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="220dp"
+    android:paddingLeft="10dp"
     >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:orientation="horizontal"
-        android:layout_margin="15dp">
+        android:orientation="horizontal">
 
         <ImageView
-            android:layout_width="0sp"
+            android:layout_width="35dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             app:srcCompat="@drawable/incidencia"/>
         <TextView
             android:id="@+id/tv_titulo_incidencia"
-            android:layout_width="0sp"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="3"
             android:gravity="center_vertical"
@@ -29,9 +28,8 @@
             android:textSize="20sp"
             android:textColor="#000"/>
         <ImageView
-            android:layout_width="0sp"
+            android:layout_width="35dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             app:srcCompat="@drawable/equipo"/>
 
         <TextView
@@ -44,121 +42,66 @@
             android:text="Equipo afectado: ________"
             android:textSize="20sp"
             android:textColor="#000"/>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-            <FrameLayout
-                android:id="@+id/img_etiqueta_descuento"
-                android:layout_width="91dp"
-                android:layout_height="40dp"
-                android:layout_gravity="right"
-                android:layout_marginTop="25dp"
-                android:visibility="gone">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/rectangle_470" />
-
-                <!--<TextView-->
-                    <!--android:id="@+id/tv_descuento"-->
-                    <!--android:layout_width="41dp"-->
-                    <!--android:layout_height="28dp"-->
-                    <!--android:layout_marginBottom="6dp"-->
-                    <!--android:layout_marginLeft="35dp"-->
-                    <!--android:layout_marginRight="15dp"-->
-                    <!--android:layout_marginTop="6dp"-->
-                    <!--android:gravity="center_vertical"-->
-                    <!--android:textAlignment="center"-->
-                    <!--android:text="2"-->
-                    <!--android:textColor="#FFF"-->
-                    <!--android:textSize="20sp" />-->
-            </FrameLayout>
-
-        </LinearLayout>
-
-        <FrameLayout
-            android:layout_width="20dp"
-            android:layout_height="match_parent"
-            android:background="@color/yellow">
-
-        </FrameLayout>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0sp"
-        android:layout_weight="1"
-        android:layout_marginBottom="10sp"
-        >
+        android:layout_height="0dp"
+        android:layout_weight="1">
         <ImageView
-            android:layout_width="0sp"
+            android:layout_width="35dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             app:srcCompat="@drawable/calendario"/>
 
         <TextView
             android:id="@+id/tv_fecha"
             android:layout_width="0sp"
             android:layout_height="wrap_content"
-            android:layout_weight="3"
+            android:layout_weight="3.2"
             android:text="03 dic. 2016"
-            android:layout_marginTop="15dp"
+            android:layout_marginLeft="10dp"
+            android:gravity="center_vertical"
             android:textSize="20sp"
             android:textColor="#000"/>
         <ImageView
-            android:layout_width="0sp"
+            android:layout_width="35dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             app:srcCompat="@drawable/pendientes"/>
         <TextView
             android:id="@+id/tv_esfuerzo"
-            android:layout_width="0sp"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_marginTop="15sp"
+            android:layout_weight="1.5"
             android:text="2"
             android:textAlignment="center"
+            android:gravity="center_vertical"
             android:textColor="@color/blackColor"
             android:textSize="20dp" />
         <ImageView
-            android:layout_width="0sp"
+            android:layout_width="35dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             app:srcCompat="@drawable/prioridad"/>
         <TextView
             android:id="@+id/tv_prioridad"
-            android:layout_width="0sp"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_margin="10sp"
+            android:layout_weight="1.5"
+            android:gravity="center_vertical"
             android:textSize="20dp"
             android:text="3"
+            android:textColor="@color/blackColor"
             android:textAlignment="center"/>
-        <FrameLayout
-            android:layout_width="0sp"
-            android:layout_height="10sp"
-            android:layout_weight="1"
-            android:background="@color/whiteColor">
-
-        </FrameLayout>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:layout_marginTop="15sp"
-        android:layout_marginBottom="10sp"
         android:orientation="horizontal">
 
         <ImageView
-            android:layout_width="0sp"
+            android:layout_width="35dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             app:srcCompat="@drawable/contact"
+            android:layout_marginRight="10dp"
             android:id="@+id/imageView5" />
 
         <TextView
@@ -166,15 +109,15 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="3"
-            android:paddingTop="10sp"
+            android:gravity="center_vertical"
             android:textColor="@color/blackColor"
             android:text="Usuario que levanta incidencia"
             android:textSize="20sp" />
 
         <ImageView
-            android:layout_width="0sp"
+            android:layout_width="35dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_marginRight="10dp"
             app:srcCompat="@drawable/especialidad"/>
 
         <TextView
@@ -183,21 +126,14 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="3"
-            android:paddingTop="10sp"
+            android:gravity="center_vertical"
             android:text="Técnico por asignar"
             android:textSize="20sp"/>
-
-        <FrameLayout
-            android:layout_width="20dp"
-            android:layout_height="match_parent"
-            android:background="@color/colorPrimary">
-
-        </FrameLayout>
     </LinearLayout>
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="5dp"
-        android:background="@color/colorPrimary">
+        android:layout_height="3dp"
+        android:background="#EF9A9A">
 
     </FrameLayout>
 </LinearLayout>

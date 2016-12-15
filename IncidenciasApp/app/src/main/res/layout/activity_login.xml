@@ -1,12 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/activity_login"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#ffffff"
     tools:context="com.example.usuario.incidenciasapp.LoginActivity">
+
+    <android.support.v7.widget.Toolbar
+        app:titleTextColor="#FFF"
+        android:id="@+id/toolbar_admin_main"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_margin="0dp"
+        android:padding="0dp"
+        android:background="@color/colorPrimary"
+        app:title="Inicia sesión"
+        android:titleTextAppearance="@style/Base.TextAppearance.Widget.AppCompat.Toolbar.Title"
+        android:theme="@style/ThemeOverlay.AppCompat.Light"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -35,7 +50,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="40sp"
-            android:textStyle="bold|italic"
+            android:textColor="@color/blackColor"
+            android:textStyle="bold"
             android:text="Incidencias Roket"/>
     </LinearLayout>
 
@@ -50,9 +66,10 @@
             android:layout_height="0dp"
             android:layout_weight="4"
             android:text="Email"
-            android:textSize="25sp"
+            android:textSize="30sp"
+            android:textColor="@color/blackColor"
             android:gravity="bottom"
-            android:textStyle="italic|bold"/>
+            android:textStyle="bold"/>
         <EditText
             android:id="@+id/edt_correo"
             android:layout_width="match_parent"
@@ -74,9 +91,10 @@
             android:layout_height="0dp"
             android:layout_weight="4"
             android:text="Password"
-            android:textSize="25sp"
+            android:textSize="30sp"
+            android:textColor="@color/blackColor"
             android:gravity="bottom"
-            android:textStyle="italic|bold"/>
+            android:textStyle="bold"/>
         <EditText
             android:id="@+id/edt_contrasena"
             android:layout_width="match_parent"
@@ -91,18 +109,16 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:padding="10dp">
+        android:gravity="bottom"
+        android:orientation="vertical">
         <Button
             android:id="@+id/btn_entrar"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="80dp"
             android:text="Acceder"
             android:background="@color/rojo"
-            android:layout_margin="20dp"
             android:textColor="@color/whiteColor"
             android:textSize="30sp"
-            android:textStyle="italic|bold"/>
+            android:textStyle="bold"/>
     </LinearLayout>
 </LinearLayout>

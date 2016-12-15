@@ -2,10 +2,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_marginTop="10dp"
+    android:paddingLeft="15dp"
     android:layout_height="230dp">
 
     <LinearLayout
-        android:layout_marginLeft="20dp"
         android:layout_marginBottom="10sp"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -13,9 +13,9 @@
         android:orientation="horizontal"
         android:gravity="center_vertical">
         <ImageView
-            android:layout_width="0sp"
+            android:layout_width="35dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_marginRight="10dp"
             android:src="@drawable/contact"/>
         <TextView
             android:id="@+id/tv_nombre_usuario"
@@ -47,7 +47,6 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_marginLeft="20dp"
         android:layout_marginBottom="10sp"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -55,10 +54,10 @@
         android:orientation="horizontal"
         android:gravity="center_vertical">
         <ImageView
-            android:layout_width="0sp"
-            android:src="@drawable/mail"
-            android:layout_weight="1"
-            android:layout_height="match_parent" />
+            android:layout_width="35dp"
+            android:layout_marginRight="10dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/mail"/>
         <TextView
             android:id="@+id/tv_email_usuario"
             android:layout_width="0sp"
@@ -70,7 +69,6 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_marginLeft="20dp"
         android:layout_marginBottom="10sp"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -79,9 +77,9 @@
         android:gravity="center_vertical">
 
         <ImageView
-            android:layout_width="0sp"
+            android:layout_width="35dp"
+            android:layout_marginRight="10dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:src="@drawable/especialidad"
             android:id="@+id/imageView2" />
 
@@ -91,7 +89,7 @@
             android:layout_height="wrap_content"
             android:text="Técnico"
             android:textSize="20sp"
-            android:layout_weight="3"
+            android:layout_weight="2"
             android:textColor="@color/blackColor"/>
 
         <TextView
@@ -100,12 +98,11 @@
             android:layout_height="wrap_content"
             android:text="HardWare"
             android:textSize="20sp"
-            android:layout_weight="3"
+            android:layout_weight="4"
             android:textColor="@color/blackColor"/>
     </LinearLayout>
 
     <LinearLayout
-        android:layout_marginLeft="20dp"
         android:layout_marginBottom = "10sp"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -114,16 +111,16 @@
         android:gravity="center_vertical">
 
         <ImageView
-            android:layout_width="0sp"
+            android:layout_width="35dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_marginRight="10dp"
             android:src="@drawable/equipo"
             android:id="@+id/imageView" />
 
         <TextView
             android:layout_width="0sp"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
+            android:textSize="20sp"
             android:text="Equipo que utiliza: "
             android:layout_weight="2"
             android:textColor="@color/blackColor" />
@@ -139,8 +136,8 @@
     </LinearLayout>
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="5dp"
-        android:background="@color/colorPrimaryDark">
+        android:layout_height="3dp"
+        android:background="#EF9A9A">
 
     </FrameLayout>
 
