@@ -46,6 +46,11 @@ public class UsuarioAdapter extends RecyclerView.Adapter<UsuarioAdapter.UsuarioV
             holder.tvEsfuerzo.setVisibility(View.GONE);
             holder.imageView3.setVisibility(View.GONE);
         }
+
+        float calificacion = Usuario.promedioTecnico(context, usuario);
+        if(!isUsuario) {
+            holder.tvCorreo.setText(usuario.getCorreo() + "         Calificación: " + calificacion);
+        }
         holder.tvEspecialidad.setText(usuario.getEspecialidad());
         holder.tvNombreUsuario.setText(usuario.getNombre());
         try {

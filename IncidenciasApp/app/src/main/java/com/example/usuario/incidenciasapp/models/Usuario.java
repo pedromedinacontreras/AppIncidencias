@@ -1,5 +1,7 @@
 package com.example.usuario.incidenciasapp.models;
 
+import android.content.Context;
+
 import java.util.ArrayList;
 
 import io.realm.Realm;
@@ -29,6 +31,8 @@ public class Usuario extends RealmObject {
     private String especialidad;
     private String nombre;
     private int esfuerzo;
+    //Rango 1 - 10
+    private float calificacion;
 
     public Usuario() {
     }
@@ -87,6 +91,14 @@ public class Usuario extends RealmObject {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public float getCalificacion() {
+        return calificacion;
+    }
+
+    public void setCalificacion(float calificacion) {
+        this.calificacion = calificacion;
     }
 
     public static ArrayList<Usuario> getAll(android.content.Context context){
@@ -183,5 +195,25 @@ public class Usuario extends RealmObject {
         Realm realm = Realm.getDefaultInstance();
         Usuario usuario = realm.where(Usuario.class).equalTo("pkUsuario", "0000000000").findFirst();
         return usuario;
+    }
+
+    public static float promedioTecnico(Context context, Usuario usuario){
+        float promedio = 0;
+        int contador = 0;
+        Realm.init(context);
+        Realm realm = Realm.getDefaultInstance();
+        realm.beginTransaction();
+        ArrayList<Incidencia> incidencias = Incidencia.getIncidenciasLiberadasByEmailTecnico(context, usuario.getCorreo());
+        for(Incidencia inc : incidencias) {
+            if(inc.getStatus() == Incidencia.ESTATUS_LIBERADA){
+                promedio = promedio + inc.getCalificacion();
+                contador = contador + 1;
+            }
+        }
+        realm.commitTransaction();
+        if(contador == 0) {
+            return 0;
+        }
+        return promedio/contador;
     }
 }

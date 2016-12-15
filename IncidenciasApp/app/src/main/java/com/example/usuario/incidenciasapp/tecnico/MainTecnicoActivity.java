@@ -10,6 +10,8 @@ import android.widget.Toast;
 
 import com.example.usuario.incidenciasapp.CatalogoActivity;
 import com.example.usuario.incidenciasapp.LoginActivity;
+import com.example.usuario.incidenciasapp.models.Incidencia;
+import com.example.usuario.incidenciasapp.models.Usuario;
 import com.example.usuario.incidenciasapp.models.UsuarioLogeado;
 import com.example.usuario.incidenciasapp.R;
 import com.example.usuario.incidenciasapp.administrador.IncidenciasAdministradorActivity;
@@ -23,6 +25,7 @@ public class MainTecnicoActivity extends AppCompatActivity {
 
     Toolbar toolbar;
     TextView tvSalir;
+    TextView tvPromedio;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,12 +43,16 @@ public class MainTecnicoActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        tvPromedio = (TextView) findViewById(R.id.tv_promedio_tecnico);
+        tvPromedio.setText("Calificación: "+Usuario.promedioTecnico(MainTecnicoActivity.this, UsuarioLogeado.getUsuarioLogeado(MainTecnicoActivity.this).getUsuario()));
     }
 
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.btn_tecnicos_incidencias:
                 Intent i = new Intent(MainTecnicoActivity.this, IncidenciasTecnicoActivity.class);
+                i.putExtra("usuario", false);
                 startActivity(i);
                 break;
             case R.id.btn_tecnicos_equipos:

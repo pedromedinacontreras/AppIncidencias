@@ -1,10 +1,12 @@
 package com.example.usuario.incidenciasapp.adapters;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.usuario.incidenciasapp.models.Incidencia;
@@ -40,10 +42,17 @@ public class IncidenciaAdapter extends RecyclerView.Adapter<IncidenciaAdapter.In
         holder.tvTituloIncidencia.setText(incidencia.getTitulo());
         holder.tvFecha.setText(incidencia.getFechaCreacion());
         holder.tvUsuarioLevanta.setText(incidencia.getUsuarioLevanta().getCorreo());
-        holder.tvTecnicoAsignado.setText(incidencia.getUsuarioTecnico().getCorreo());
+        try{
+            holder.tvTecnicoAsignado.setText(incidencia.getUsuarioTecnico().getCorreo());
+        } catch (Exception e) {
+            holder.tvTecnicoAsignado.setText("Usuario por asignar");
+        }
         holder.tvEquipoAfectado.setText(incidencia.getEquipoAfectado());
         holder.tvEsfuerzo.setText(incidencia.getEsfuerzo()+"");
         holder.tvPrioridad.setText(incidencia.getPrioridad()+"");
+        if(incidencia.getStatus() == Incidencia.ESTATUS_LIBERADA) {
+            holder.linearLayout.setBackgroundColor(Color.parseColor("#8bdc64"));
+        }
     }
 
     @Override
@@ -60,6 +69,7 @@ public class IncidenciaAdapter extends RecyclerView.Adapter<IncidenciaAdapter.In
         TextView tvFecha;
         TextView tvEsfuerzo;
         TextView tvPrioridad;
+        LinearLayout linearLayout;
 
         public IncidenciaViewHolder(View view){
             super(view);
@@ -70,6 +80,7 @@ public class IncidenciaAdapter extends RecyclerView.Adapter<IncidenciaAdapter.In
             tvFecha = (TextView) view.findViewById(R.id.tv_fecha);
             tvEsfuerzo = (TextView) view.findViewById(R.id.tv_esfuerzo);
             tvPrioridad = (TextView) view.findViewById(R.id.tv_prioridad);
+            linearLayout = (LinearLayout) view.findViewById(R.id.contenedor_incidencia);
         }
     }
 }

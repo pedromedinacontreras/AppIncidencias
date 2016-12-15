@@ -184,6 +184,36 @@
                 android:textStyle="bold"
                 android:background="@color/lightWhite" />
         </LinearLayout>
+        <LinearLayout
+            android:background="@color/lightGray"
+            android:padding="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:id="@+id/llcalificacion"
+            android:visibility="gone"
+            android:layout_weight="1"
+            android:weightSum="2"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0sp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.7"
+                android:text="Calificación:"
+                android:textAlignment="textEnd"
+                android:paddingRight="50sp"
+                android:textStyle="bold"
+                android:textSize="18sp"/>
+            <TextView
+                android:id="@+id/tv_calificacion"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.3"
+                android:text="_______________"
+                android:textSize="16sp"
+                android:paddingLeft="30sp"
+                android:textStyle="bold"
+                android:background="@color/lightWhite" />
+        </LinearLayout>
         <Button
             android:id="@+id/btn_asignar_tecnico"
             android:layout_width="150dp"
@@ -195,5 +225,15 @@
             android:text="Asignar técnico"
             android:visibility="gone"/>
 
+        <Button
+            android:id="@+id/btn_liberar_incidencia"
+            android:layout_width="150dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="20sp"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/whiteColor"
+            android:text="Liberar incidencia"
+            android:visibility="gone"/>
     </LinearLayout>
 </LinearLayout>

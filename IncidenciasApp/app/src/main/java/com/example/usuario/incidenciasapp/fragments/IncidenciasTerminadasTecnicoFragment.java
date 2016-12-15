@@ -11,14 +11,24 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.NumberPicker;
 import android.widget.TextView;
 
 import com.example.usuario.incidenciasapp.R;
 import com.example.usuario.incidenciasapp.RecyclerItemClickListener;
 import com.example.usuario.incidenciasapp.adapters.IncidenciaAdapter;
+import com.example.usuario.incidenciasapp.adapters.IncidenciaDisponibleAdapter;
+import com.example.usuario.incidenciasapp.administrador.IncidenciasAdministradorActivity;
 import com.example.usuario.incidenciasapp.models.Incidencia;
+import com.example.usuario.incidenciasapp.models.Usuario;
+import com.example.usuario.incidenciasapp.models.UsuarioLogeado;
+import com.example.usuario.incidenciasapp.tecnico.IncidenciasTecnicoActivity;
 
 import java.util.ArrayList;
+
+import io.realm.Realm;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -74,7 +84,7 @@ public class IncidenciasTerminadasTecnicoFragment extends Fragment {
         }));
     }
 
-    public Dialog createDetalleIncidenciaDialog(int position){
+    public Dialog createDetalleIncidenciaDialog(final int position){
         final AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         incidencia = incidencias.get(position);
         LayoutInflater inflater = getActivity().getLayoutInflater();
@@ -87,6 +97,23 @@ public class IncidenciasTerminadasTecnicoFragment extends Fragment {
         TextView tvUsuarioLevanta = (TextView) view.findViewById(R.id.tv_usuario_levanta_incidencia);
         TextView tvEquipo = (TextView) view.findViewById(R.id.tv_equipo_incidencia);
         TextView tvTecnico = (TextView) view.findViewById(R.id.tv_tecnico_incidencia);
+        if(isUsuario && incidencia.getStatus() == Incidencia.ESTATUS_TERMINADA){
+            Button btnLiberar = (Button) view.findViewById(R.id.btn_liberar_incidencia);
+            btnLiberar.setVisibility(View.VISIBLE);
+            btnLiberar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    createCalificarDialog(position).show();
+                }
+            });
+        }
+
+        if(incidencia.getStatus() == Incidencia.ESTATUS_LIBERADA) {
+            LinearLayout llcalificacion = (LinearLayout) view.findViewById(R.id.llcalificacion);
+            llcalificacion.setVisibility(View.VISIBLE);
+            TextView tvCalificacion = (TextView) view.findViewById(R.id.tv_calificacion);
+            tvCalificacion.setText(incidencia.getCalificacion()+"");
+        }
         tvCategoria.setText(incidencia.getCategoria());
         tvTitulo.setText(incidencia.getTitulo());
         tvFecha.setText(incidencia.getFechaCreacion());
@@ -103,8 +130,47 @@ public class IncidenciasTerminadasTecnicoFragment extends Fragment {
                 });
         return builder.create();
     }
+
+    public Dialog createCalificarDialog(int position){
+        final AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        incidencia = incidencias.get(position);
+        LayoutInflater inflater = getActivity().getLayoutInflater();
+        final View view = inflater.inflate(R.layout.dialog_califica,null);
+        final NumberPicker numberPicker = (NumberPicker) view.findViewById(R.id.numberPicker);
+        numberPicker.setMaxValue(10);
+        numberPicker.setMinValue(1);
+        builder.setView(view)
+                .setTitle("Calificar")
+                .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                })
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Realm.init(getContext());
+                        Realm realm = Realm.getDefaultInstance();
+                        realm.beginTransaction();
+                        incidencia.setStatus(Incidencia.ESTATUS_LIBERADA);
+                        incidencia.setCalificacion(numberPicker.getValue());
+                        realm.commitTransaction();
+                        updateAdapter();
+                        adapter.notifyDataSetChanged();
+                        dialog.dismiss();
+                    }
+                });
+        return builder.create();
+    }
+
     public void notifyDataChanged(){
         adapter.notifyDataSetChanged();
     }
-}
 
+    private void updateAdapter(){
+        incidencias = Incidencia.getIncidenciasTerminadasByUser(getContext());
+        adapter = new IncidenciaAdapter(getContext(),incidencias, Incidencia.ESTATUS_TERMINADA);
+        recyclerView.setAdapter(adapter);
+    }
+}
