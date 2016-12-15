@@ -23,19 +23,8 @@ public class IncidenciaAdapter extends RecyclerView.Adapter<IncidenciaAdapter.In
     private int status;
 
     public IncidenciaAdapter(Context context, ArrayList<Incidencia> items, int status) {
-        //this.items = items;
+        this.items = items;
         this.context = context;
-        switch (status) {
-            case Incidencia.ESTATUS_DISPONIBLE:
-                this.items = Incidencia.getIncidenciasDisponibles(context);
-                break;
-            case Incidencia.ESTATUS_EN_PROCESO:
-                this.items = Incidencia.getIncidenciasEnProceso(context);
-                break;
-            case Incidencia.ESTATUS_TERMINADA:
-                this.items = Incidencia.getIncidenciasTerminadas(context);
-                break;
-        }
     }
 
     @Override
