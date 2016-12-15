@@ -18,6 +18,7 @@ public class Incidencia extends RealmObject {
     public static final int ESTATUS_DISPONIBLE = 0;
     public static final int ESTATUS_EN_PROCESO = 1;
     public static final int ESTATUS_TERMINADA = 2;
+    public static final int ESTATUS_LIBERADA = 3;
     public static final int ESFUERZO_BAJO = 1;
     public static final int ESFUERZO_MEDIO = 2;
     public static final int ESFUERZO_ALTO = 3;
@@ -36,6 +37,7 @@ public class Incidencia extends RealmObject {
     private int esfuerzo;
     private String correoLevanta;
     private String correoTecnico;
+    private int calificacion;
 
     public Integer getPkIncidencia() {
         return pkIncidencia;
@@ -143,6 +145,14 @@ public class Incidencia extends RealmObject {
         this.correoTecnico = correoTecnico;
     }
 
+    public int getCalificacion() {
+        return calificacion;
+    }
+
+    public void setCalificacion(int calificacion) {
+        this.calificacion = calificacion;
+    }
+
     public static void newIncidencia(Context context, String descripcion, int status, String equipoAfectado, String fechaCreacion,
                                      Usuario usuarioLevanta, String categoria, String titulo) {
         Realm.init(context);
@@ -214,11 +224,22 @@ public class Incidencia extends RealmObject {
         return incidenciasDisponibles;
     }
 
+    public static ArrayList<Incidencia> getIncidenciasLiberadasByEmailTecnico (Context context, String correo) {
+        ArrayList<Incidencia> incidenciasDisponibles= new ArrayList<>();
+        Realm.init(context);
+        Realm realm = Realm.getDefaultInstance();
+        RealmResults<Incidencia> incidenciaRealmResults = realm.where(Incidencia.class).equalTo("status", ESTATUS_LIBERADA).equalTo("correoTecnico",correo).findAll();
+        incidenciasDisponibles.addAll(incidenciaRealmResults);
+        return incidenciasDisponibles;
+    }
+
     public static ArrayList<Incidencia> getIncidenciasTerminadas(Context context) {
         ArrayList<Incidencia> incidenciasDisponibles= new ArrayList<>();
         Realm.init(context);
         Realm realm = Realm.getDefaultInstance();
         RealmResults<Incidencia> incidenciaRealmResults = realm.where(Incidencia.class).equalTo("status", ESTATUS_TERMINADA).findAll();
+        incidenciasDisponibles.addAll(incidenciaRealmResults);
+        incidenciaRealmResults = realm.where(Incidencia.class).equalTo("status", ESTATUS_LIBERADA).findAll();
         incidenciasDisponibles.addAll(incidenciaRealmResults);
         return incidenciasDisponibles;
     }
@@ -229,6 +250,8 @@ public class Incidencia extends RealmObject {
         Realm realm = Realm.getDefaultInstance();
         RealmResults<Incidencia> incidenciaRealmResults = realm.where(Incidencia.class).equalTo("status", ESTATUS_TERMINADA).equalTo("correoLevanta",UsuarioLogeado.getUsuarioLogeado(context).getUsuario().getCorreo()).findAll();
         incidenciasDisponibles.addAll(incidenciaRealmResults);
+        incidenciaRealmResults = realm.where(Incidencia.class).equalTo("status", ESTATUS_LIBERADA).equalTo("correoLevanta",UsuarioLogeado.getUsuarioLogeado(context).getUsuario().getCorreo()).findAll();
+        incidenciasDisponibles.addAll(incidenciaRealmResults);
         return incidenciasDisponibles;
     }
 
@@ -237,6 +260,8 @@ public class Incidencia extends RealmObject {
         Realm.init(context);
         Realm realm = Realm.getDefaultInstance();
         RealmResults<Incidencia> incidenciaRealmResults = realm.where(Incidencia.class).equalTo("status", ESTATUS_TERMINADA).equalTo("correoTecnico",UsuarioLogeado.getUsuarioLogeado(context).getUsuario().getCorreo()).findAll();
+        incidenciasDisponibles.addAll(incidenciaRealmResults);
+        incidenciaRealmResults = realm.where(Incidencia.class).equalTo("status", ESTATUS_LIBERADA).equalTo("correoTecnico",UsuarioLogeado.getUsuarioLogeado(context).getUsuario().getCorreo()).findAll();
         incidenciasDisponibles.addAll(incidenciaRealmResults);
         return incidenciasDisponibles;
     }
